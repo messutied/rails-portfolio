@@ -1,7 +1,7 @@
 module Portfolio
   class ItemsController < ApplicationController
     before_action :set_item, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_admin_user!, except: [:default]
+    before_action Portfolio.auth_action, except: [:default]
 
     layout 'portfolio/admin'
 

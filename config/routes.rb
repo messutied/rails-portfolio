@@ -1,7 +1,7 @@
 Portfolio::Engine.routes.draw do
-  devise_for :admin_users, class_name: 'Portfolio::AdminUser', module: :devise
-    # path: '', path_names: {sign_in: '/portfolio/admin_users/sign_in'},
-    # controllers: { registrations: 'portfolio/registrations' }
+  if Portfolio.auth_method == :portfolio_admin_user
+    devise_for :admin_users, class_name: 'Portfolio::AdminUser', module: :devise
+  end
   
   scope '/admin' do
     resources :items do

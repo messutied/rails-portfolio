@@ -2,7 +2,7 @@ module Portfolio
   class SocialLinksController < ApplicationController
     before_action :set_link, only: [:show, :edit, :update, :destroy]
     before_action :set_item
-    before_action :authenticate_admin_user!
+    before_action Portfolio.auth_action
 
     layout 'portfolio/admin'
 
