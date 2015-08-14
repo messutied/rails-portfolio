@@ -3,6 +3,8 @@ module Portfolio
     before_action :set_item, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_admin_user!, except: [:default]
 
+    layout 'portfolio/admin'
+
     def index
       @items = Item.all
     end

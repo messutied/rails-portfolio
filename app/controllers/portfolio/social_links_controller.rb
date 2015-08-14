@@ -4,6 +4,8 @@ module Portfolio
     before_action :set_item
     before_action :authenticate_admin_user!
 
+    layout 'portfolio/admin'
+
     # TODO: replace horrible method paths with [res, res, ...] format (not working for some reason)
     def index
       @links = Portfolio::SocialLink.all
