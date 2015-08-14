@@ -16,8 +16,8 @@
       <tr>
         <td><%= portfolio_social_link.name %></td>
         <td><%= portfolio_social_link.user_name %></td>
-        <td><%= link_to 'Edit', edit_portfolio_item_social_link_path(@item, portfolio_social_link) %></td>
-        <td><%= link_to 'Destroy', portfolio_item_social_link_path(@item, portfolio_social_link), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_item_social_link_path(@item, portfolio_social_link) %></td>
+        <td><%= link_to 'Destroy', item_social_link_path(@item, portfolio_social_link), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,5 +25,5 @@
 
 <br>
 
-<%= link_to 'New Social link', new_portfolio_item_social_link_path(@item), class: 'btn btn-primary' %>
-<%= link_to 'Go Back', edit_portfolio_item_path(@item), class: 'btn btn-default' %>
+<%= link_to 'New Social link', new_item_social_link_path(@item), class: 'btn btn-primary' %>
+<%= link_to 'Go Back', edit_item_path(@item), class: 'btn btn-default' %>

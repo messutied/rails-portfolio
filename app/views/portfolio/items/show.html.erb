@@ -21,9 +21,9 @@
       <% end %>
     </div>
     
-    <% if portfolio_admin_user_signed_in? and not params[:preview] %>
-      <%= link_to 'Edit', edit_portfolio_item_path(@item) %> |
-      <%= link_to 'Back', portfolio_items_path %>
+    <% if admin_user_signed_in? and not params[:preview] %>
+      <%= link_to 'Edit', edit_item_path(@item) %> |
+      <%= link_to 'Back', items_path %>
     <% end %>
   </div>
 <% else %>

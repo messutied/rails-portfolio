@@ -8,13 +8,13 @@ module Portfolio
     end
 
     def show
-      render layout: 'portfolio'
+      render layout: 'portfolio/portfolio'
     end
 
     def default
       
       @item = Item.where(default: true).first
-      render :show, layout: 'portfolio'
+      render :show, layout: 'portfolio/portfolio'
     end
 
     def new
@@ -66,7 +66,7 @@ module Portfolio
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def item_params
-        params.require(:portfolio_item).permit(:key, :title, :summary, :avatar, :default, :email, :person_name)
+        params.require(:item).permit(:key, :title, :summary, :avatar, :default, :email, :person_name)
       end
   end
 end

@@ -14,6 +14,6 @@ class Portfolio::SocialLink < ActiveRecord::Base
 
   def get_info
     link = LINKS[name.to_sym]
-    {title: link[0], url: link[1]+user_name, img: "social_links/#{name}.png"}
+    {title: link[0], url: link[1]+user_name, img: "portfolio/social_links/#{name}.png"}
   end
 end

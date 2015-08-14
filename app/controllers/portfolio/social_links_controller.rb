@@ -24,7 +24,7 @@ module Portfolio
 
       respond_to do |format|
         if @link.save
-          format.html { redirect_to portfolio_item_social_links_path(@item), notice: 'Social link was successfully created.' }
+          format.html { redirect_to item_social_links_path(@item), notice: 'Social link was successfully created.' }
           format.json { render :show, status: :created, location: @link }
         else
           format.html { render :new }
@@ -36,7 +36,7 @@ module Portfolio
     def update
       respond_to do |format|
         if @link.update(link_params)
-          format.html { redirect_to portfolio_item_social_links_path(@item), notice: 'Social link was successfully updated.' }
+          format.html { redirect_to item_social_links_path(@item), notice: 'Social link was successfully updated.' }
           format.json { render :show, status: :ok, location: @link }
         else
           format.html { render :edit }
@@ -48,7 +48,7 @@ module Portfolio
     def destroy
       @link.destroy
       respond_to do |format|
-        format.html { redirect_to portfolio_item_social_links_url(@item), notice: 'Social link was successfully destroyed.' }
+        format.html { redirect_to item_social_links_url(@item), notice: 'Social link was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

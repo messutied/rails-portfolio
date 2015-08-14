@@ -16,10 +16,10 @@
       <tr>
         <td><%= item.key %></td>
         <td><%= item.title %></td>
-        <td><%= link_to item.social_links.count, portfolio_item_social_links_path(item) %></td>
+        <td><%= link_to item.social_links.count, item_social_links_path(item) %></td>
         <td><%= item.default ? 'Yes' : 'No' %></td>
         <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_portfolio_item_path(item) %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

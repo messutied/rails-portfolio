@@ -1,5 +1,5 @@
 <%= form_for([@item, @link], 
-    url: @link.new_record? ? portfolio_item_social_links_path(@item) : portfolio_item_social_link_path(@item, @link), 
+    url: @link.new_record? ? item_social_links_path(@item) : item_social_link_path(@item, @link), 
     as: :social_link) do |f| %>
   <% if @link.errors.any? %>
     <div id="error_explanation">
@@ -25,6 +25,6 @@
   <%= f.hidden_field :item_id %>
   <div class="actions">
     <%= f.submit class: 'btn btn-primary' %>
-    <%= link_to 'Back', portfolio_item_social_links_path, class: 'btn btn-default' %>
+    <%= link_to 'Back', item_social_links_path, class: 'btn btn-default' %>
   </div>
 <% end %>
