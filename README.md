@@ -36,18 +36,20 @@ root 'portfolio/items#default'
 
 Add the following to your `application.js` right after `jquery`:
 
-```javascrip
+```javascript
 //= require portfolio/application
 ```
 
-Rename `application.css` to be `application.scss` and add the following:
+Add the following to your `application.css`:
 
-```scss
-@import "portfolio/application";
+```css
+/*
+ *= require 'portfolio/application'
+ */
 ```
 
 ### 4) Define your authorization method
-If you don't have an authorization method already in place, you don't have to do anything and we'll setup an admin_user table and login interface for you (throug `devise`), if you'd like to use your own auth method you'll have to:
+If you don't have an authorization method already in place, you don't have to do anything and we'll setup an admin_user table and login interface for you (through `devise`), if you'd like to use your own auth method you'll have to:
 
 Create and initializer in `config/initializers/portfolio.rb` with your authorization method inside as follows:
 
