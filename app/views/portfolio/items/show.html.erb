@@ -1,0 +1,37 @@
+<% unless @item.nil? %>
+  <%= content_for :title, @item.person_name %>
+  <div class="portfolio_container">
+    <%= image_tag @item.avatar.url(:thumb), class: :pf_avatar if @item.avatar.file? %>
+
+    <h1><%= @item.title %></h1>
+
+    <div class="pf_summary">
+      <%= raw render_markdown @item.summary %>
+    </div>
+
+    <div class="pf_contact">
+      <%= link_to 'Email me', "mailto:#{@item.email}", target: :_blank, class: 'btn btn-default' %>
+    </div>
+
+    <div class="pf_social_links">
+      <% @item.social_links.each do |link| %>
+      <%= link_to image_tag(link.get_info[:img]), link.get_info[:url], 
+          title: link.get_info[:title], target: :_blank, 
+          data: {toggle: 'tooltip', placement: 'top'} %>
+      <% end %>
+    </div>
+    
+    <% if portfolio_admin_user_signed_in? and not params[:preview] %>
+      <%= link_to 'Edit', edit_portfolio_item_path(@item) %> |
+      <%= link_to 'Back', portfolio_items_path %>
+    <% end %>
+  </div>
+<% else %>
+  <span>Coming soon!</span>
+<% end %>
+
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  });
+</script>

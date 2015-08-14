@@ -1,0 +1,78 @@
+<%= form_for(@item, :html => { :multipart => true }) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this portfolio item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <%= f.label :key %>
+        <%= f.text_field :key, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <%= f.label :person_name %>
+        <%= f.text_field :person_name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="checkbox">
+        <br>
+        <label>
+          <%= f.check_box :default %>
+          Default
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :summary %><br>
+    <%= f.text_area :summary, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to 'Back', portfolio_items_path, class: 'btn btn-default' %>
+    <% unless @item.new_record? %>
+    <%= link_to 'Show', @item, class: 'btn btn-default' %>
+    <%= link_to 'Links', portfolio_item_social_links_path(@item), class: 'btn btn-default' %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,52 @@
+.portfolio_container {
+  text-align: center;
+  padding-top: 30px;
+
+  .pf_avatar {
+    border-radius: 75px;
+    border: 3px solid rgb(223, 223, 223);
+  }
+
+  h1 {
+    background-color: rgb(123, 159, 207);
+    color: white;
+    padding: 15px 0;
+    margin: 30px 0;
+  }
+
+  .pf_summary {
+    color: grey;
+    text-align: left;
+    font-size: 1.5em;
+    width: 618px;
+    margin: 0 auto 60px;
+
+    p {
+      margin-bottom: 1.5em;
+    }
+  }
+
+  @media (max-width: $screen-sm-min) {
+    .pf_summary {
+      width: 90%;
+      margin: 0 5%;
+    }
+  }
+
+  .pf_contact {
+    font-size: 2em;
+    margin-bottom: 30px;
+  }
+
+  .pf_social_links {
+    padding-bottom: 30px;
+    img {
+      height: 32px;
+      margin: 10px 5px 0 5px;
+    }
+  }
+}
+
+#portfolio_item_summary {
+  height: 300px;
+}
