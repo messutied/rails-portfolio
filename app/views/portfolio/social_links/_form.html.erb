@@ -1,0 +1,31 @@
+<%= form_for(@social_link) do |f| %>
+  <% if @social_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@social_link.errors.count, "error") %> prohibited this social_link from being saved:</h2>
+
+      <ul>
+      <% @social_link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :url_pattern %><br>
+    <%= f.text_field :url_pattern, placeholder: 'e.g. www.twitter.com/[user_name]', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %><br>
+    <%= image_tag @social_link.image.url(:medium), class: 'edit-social-link-image' %>
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to 'Back', social_links_path, class: 'btn btn-default' %>
+  </div>
+<% end %>

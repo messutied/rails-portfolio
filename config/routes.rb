@@ -7,6 +7,7 @@ Portfolio::Engine.routes.draw do
     resources :items do
       resources :item_social_links
     end
+    resources :social_links
 
     root 'items#index'
   end

@@ -23,10 +23,8 @@ module Portfolio
       end
 
       def mount_engine
-        inject_into_file 'config/routes.rb', after: "Rails.application.routes.draw do\n" do
-          "\n  mount Portfolio::Engine, at: '/portfolio'\n"+
-          "  # root 'portfolio/items#default'\n\n"
-        end
+        route "\n  mount Portfolio::Engine, at: '/portfolio'\n"+
+              "  # root 'portfolio/items#default'\n\n"
       end
 
       def insert_javascript

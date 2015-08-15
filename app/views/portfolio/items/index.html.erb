@@ -16,7 +16,7 @@
       <tr>
         <td><%= item.key %></td>
         <td><%= item.title %></td>
-        <td><%= link_to item.social_links.count, item_social_links_path(item) %></td>
+        <td><%= link_to item.item_social_links.count, item_item_social_links_path(item) %></td>
         <td><%= item.default ? 'Yes' : 'No' %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
