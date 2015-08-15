@@ -8,21 +8,21 @@ module Portfolio
 
     # TODO: replace horrible method paths with [res, res, ...] format (not working for some reason)
     def index
-      @links = Portfolio::ItemSocialLink.all
+      @links = @item.item_social_links
     end
 
     def show
     end
 
     def new
-      @link = Portfolio::ItemSocialLink.new item: @item
+      @link = ItemSocialLink.new item: @item
     end
 
     def edit
     end
 
     def create
-      @link = Portfolio::ItemSocialLink.new(link_params)
+      @link = ItemSocialLink.new(link_params)
 
       respond_to do |format|
         if @link.save
@@ -58,7 +58,7 @@ module Portfolio
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_link
-        @link = Portfolio::ItemSocialLink.find(params[:id])
+        @link = ItemSocialLink.find(params[:id])
       end
 
       # Never trust parameters from the scary internet, only allow the white list through.

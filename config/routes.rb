@@ -6,6 +6,7 @@ Portfolio::Engine.routes.draw do
   scope '/admin' do
     resources :items do
       resources :item_social_links
+      resources :item_menu_links
     end
     resources :social_links
 

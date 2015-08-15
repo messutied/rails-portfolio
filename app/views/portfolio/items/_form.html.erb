@@ -71,8 +71,9 @@
     <%= f.submit class: 'btn btn-primary' %>
     <%= link_to 'Back', items_path, class: 'btn btn-default' %>
     <% unless @item.new_record? %>
-    <%= link_to 'Show', @item, class: 'btn btn-default' %>
-    <%= link_to 'Links', item_item_social_links_path(@item), class: 'btn btn-default' %>
+    <%= link_to 'Preview', @item, class: 'btn btn-default' %>
+    <%= link_to "Menu Links (#{@item.item_menu_links.count})", item_item_menu_links_path(@item), class: 'btn btn-default' %>
+    <%= link_to "Social Links (#{@item.item_social_links.count})", item_item_social_links_path(@item), class: 'btn btn-default' %>
     <% end %>
   </div>
 <% end %>

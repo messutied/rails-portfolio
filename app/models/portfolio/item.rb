@@ -4,6 +4,7 @@ module Portfolio
     validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
     has_many :item_social_links
+    has_many :item_menu_links
     after_update :set_only_one_default
 
     private
