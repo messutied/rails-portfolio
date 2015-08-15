@@ -28,7 +28,7 @@ This will create:
 
 - config/initializers/portfolio.rb
 
-And insert into:
+And insert code into:
 
 - config/routes.rb
 - app/assets/javascripts/application.js
@@ -41,7 +41,7 @@ root 'portfolio/items#default'
 ```
 
 ### 3) Define your authorization method
-If you don't have an authorization method already in place, you don't have to do anything and we'll setup an admin_user table and login interface for you (through `devise`), if you'd like to use your own auth method you'll have to uncomment the following lines in `config/initializers/portfolio.rb`:
+If you don't have an authorization method already in place, you don't have to do anything and we'll setup an admin_user table and login interface for you (through [devise](https://github.com/plataformatec/devise)), if you'd like to use your own auth method you'll have to uncomment the following lines in `config/initializers/portfolio.rb`:
 
 ```ruby
 Portfolio.setup do |config|
