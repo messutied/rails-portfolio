@@ -1,3 +1,6 @@
+# Fix for devise redirecting to the wrong path on auth failing
+# /admin_user/sign_in instead of /portfolio/admin_user/sign_in
+
 module Portfolio
   class CustomFailure < Devise::FailureApp
     def redirect_url

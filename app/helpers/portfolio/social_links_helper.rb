@@ -1,2 +1,0 @@
-module Portfolio::SocialLinksHelper
-end
