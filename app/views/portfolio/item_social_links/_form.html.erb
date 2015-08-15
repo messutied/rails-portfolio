@@ -1,15 +1,5 @@
 <%= form_for([@item, @link], as: :social_link) do |f| %>
-  <% if @link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this portfolio_social_link from being saved:</h2>
-
-      <ul>
-      <% @link.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'portfolio/shared/form_errors', record: @link %>
 
   <div class="form-group">
     <%= f.label :social_link_id %><br>

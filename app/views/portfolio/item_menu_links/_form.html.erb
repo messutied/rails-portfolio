@@ -1,15 +1,5 @@
 <%= form_for([@item, @item_menu_link]) do |f| %>
-  <% if @item_menu_link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@item_menu_link.errors.count, "error") %> prohibited this item_menu_link from being saved:</h2>
-
-      <ul>
-      <% @item_menu_link.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'portfolio/shared/form_errors', record: @item_menu_link %>
 
   <div class="form-group">
     <%= f.label :name %><br>

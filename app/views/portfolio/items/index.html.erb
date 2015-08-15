@@ -5,6 +5,7 @@
     <tr>
       <th>Key</th>
       <th>Person</th>
+      <th>Projects</th>
       <th>Menu Links</th>
       <th>Social Links</th>
       <th>Default</th>
@@ -17,6 +18,7 @@
       <tr>
         <td><%= item.key %></td>
         <td><%= item.person_name %></td>
+        <td><%= link_to item.item_projects.count, item_item_projects_path(item) %></td>
         <td><%= link_to item.item_menu_links.count, item_item_menu_links_path(item) %></td>
         <td><%= link_to item.item_social_links.count, item_item_social_links_path(item) %></td>
         <td><%= item.default ? 'Yes' : 'No' %></td>

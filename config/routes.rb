@@ -7,6 +7,11 @@ Portfolio::Engine.routes.draw do
     resources :items do
       resources :item_social_links
       resources :item_menu_links
+      resources :item_projects do
+        resources :item_project_images do
+          member { put :set_default }
+        end
+      end
     end
     resources :social_links
 
