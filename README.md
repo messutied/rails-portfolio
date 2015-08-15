@@ -44,7 +44,7 @@ Add the following to your `application.css`:
 
 ```css
 /*
- *= require 'portfolio/application'
+ *= require portfolio/application
  */
 ```
 

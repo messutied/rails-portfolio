@@ -1,6 +1,4 @@
-<%= form_for([@item, @link], 
-    url: @link.new_record? ? item_social_links_path(@item) : item_social_link_path(@item, @link), 
-    as: :social_link) do |f| %>
+<%= form_for([@item, @link], as: :social_link) do |f| %>
   <% if @link.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@link.errors.count, "error") %> prohibited this portfolio_social_link from being saved:</h2>
@@ -14,8 +12,8 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name %><br>
-    <%= f.select :name, Portfolio::SocialLink.list, {}, class: 'form-control' %>
+    <%= f.label :social_link_id %><br>
+    <%= f.select :social_link_id, Portfolio::SocialLink.all.map { |link| [link.name, link.id] }, {}, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :user_name %><br>
@@ -25,6 +23,6 @@
   <%= f.hidden_field :item_id %>
   <div class="actions">
     <%= f.submit class: 'btn btn-primary' %>
-    <%= link_to 'Back', item_social_links_path, class: 'btn btn-default' %>
+    <%= link_to 'Back', item_item_social_links_path, class: 'btn btn-default' %>
   </div>
 <% end %>
