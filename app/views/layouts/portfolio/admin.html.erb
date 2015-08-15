@@ -42,10 +42,9 @@
     <div class="container">
       <%= bootstrap_flash %>
       <%= yield %>
-    </div> <!-- /container -->
-    <footer>
-      <p>&copy; Eduardo Messuti <%= Time.now.year %></p>
-    </footer>
+    </div>
+
+    <%= render 'portfolio/shared/footer' %>
 
   </body>
 </html>

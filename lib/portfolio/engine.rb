@@ -15,9 +15,10 @@ module Portfolio
   end
 
   class << self
-    mattr_accessor :auth_method, :auth_action
-    self.auth_method = :portfolio_admin_user
-    self.auth_action = :authenticate_admin_user!
+    mattr_accessor :auth_method, :auth_action, :company_name
+    self.auth_method  = :portfolio_admin_user
+    self.auth_action  = :authenticate_admin_user!
+    self.company_name = 'Rails Portfolio'
   end
 
   def self.setup(&block)

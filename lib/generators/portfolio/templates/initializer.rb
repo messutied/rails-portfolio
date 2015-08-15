@@ -1,4 +1,7 @@
 Portfolio.setup do |config|
+  # This is displayed in the footer
+  config.company_name = 'Rails Portfolio'
+
   # Set your custom authorization method by un-commenting the line below
   # If you don't have any authorization method in place just leave everything 
   # below commented and we'll use devise.
