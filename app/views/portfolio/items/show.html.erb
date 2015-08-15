@@ -1,6 +1,9 @@
 <% unless @item.nil? %>
   <%= content_for :title, @item.person_name %>
+
   <div class="portfolio_container">
+    <%= render 'header_menu' if @item.item_menu_links.count > 0 %>
+
     <%= image_tag @item.avatar.url(:thumb), class: :pf_avatar if @item.avatar.file? %>
 
     <h1><%= @item.title %></h1>

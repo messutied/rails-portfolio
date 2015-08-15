@@ -3,8 +3,8 @@ module Portfolio
     has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "150x150>" }
     validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-    has_many :item_social_links
-    has_many :item_menu_links
+    has_many :item_social_links, dependent: :delete_all
+    has_many :item_menu_links, dependent: :delete_all
     after_update :set_only_one_default
 
     private

@@ -13,5 +13,5 @@ Portfolio::Engine.routes.draw do
     root 'items#index'
   end
 
-  root 'items#default', as: :default_item
+  get '/:portfolio_key' => 'items#show_by_key', as: :show_portfolio
 end

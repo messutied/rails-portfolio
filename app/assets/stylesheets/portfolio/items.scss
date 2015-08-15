@@ -1,6 +1,21 @@
 .portfolio_container {
   text-align: center;
   padding-top: 30px;
+  position: relative;
+
+  .portfolio_header_menu {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+
+    a {
+      margin-left: 10px;
+    }
+    a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
 
   .pf_avatar {
     border-radius: 75px;

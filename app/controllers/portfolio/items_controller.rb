@@ -13,8 +13,12 @@ module Portfolio
       render layout: 'portfolio/portfolio'
     end
 
+    def show_by_key
+      @item = Item.find_by(key: params[:portfolio_key])
+      render :show, layout: 'portfolio/portfolio'
+    end
+
     def default
-      
       @item = Item.where(default: true).first
       render :show, layout: 'portfolio/portfolio'
     end
