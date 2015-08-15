@@ -18,40 +18,30 @@ gem 'rails-portfolio'
 
 And run `bundle install`.
 
-### 2) Mount the engine
+### 2) Install
 
-Add the following line to your `config/routes.rb`:
+Run the following command:
 
-```ruby
-mount Portfolio::Engine, at: '/portfolio'
-```
+	rake portfolio:install
 
-Make sure you have a root path defined too. If you'd like to point the root path at your portfolio, do it as follows:
+This will create:
+
+- config/initializers/portfolio.rb
+
+And insert into:
+
+- config/routes.rb
+- app/assets/javascripts/application.js
+- app/assets/stylesheets/application.css
+
+Make sure you have a root path defined. If you'd like to point the root path at your portfolio, uncomment the line:
 
 ```ruby
 root 'portfolio/items#default'
 ```
 
-### 3) Set up assets
-
-Add the following to your `application.js` right after `jquery`:
-
-```javascript
-//= require portfolio/application
-```
-
-Add the following to your `application.css`:
-
-```css
-/*
- *= require portfolio/application
- */
-```
-
-### 4) Define your authorization method
-If you don't have an authorization method already in place, you don't have to do anything and we'll setup an admin_user table and login interface for you (through `devise`), if you'd like to use your own auth method you'll have to:
-
-Create and initializer in `config/initializers/portfolio.rb` with your authorization method inside as follows:
+### 3) Define your authorization method
+If you don't have an authorization method already in place, you don't have to do anything and we'll setup an admin_user table and login interface for you (through `devise`), if you'd like to use your own auth method you'll have to uncomment the following lines in `config/initializers/portfolio.rb`:
 
 ```ruby
 Portfolio.setup do |config|
@@ -62,7 +52,7 @@ end
 
 `my_auth_action!` is the method that'll be called before enabling the user to access the portfolio admin panel, so make sure it exists and only returns true when properly authorized.
 
-### 5) Migrations
+### 4) Migrations
 1. Run: `rake portfolio:install:migrations` to copy the portfolio migrations into your project.
 2. Run `rake db:migrate` to execute them.
 
