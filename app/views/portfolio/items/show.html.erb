@@ -2,7 +2,7 @@
   <%= content_for :title, @item.person_name %>
 
   <div class="portfolio_container">
-    <%= render 'header_menu' if @item.item_menu_links.count > 0 %>
+    <%= render 'header_menu' %>
 
     <%= image_tag @item.avatar.url(:thumb), class: :pf_avatar if @item.avatar.file? %>
 
@@ -11,6 +11,8 @@
     <div class="pf_summary">
       <%= raw render_markdown @item.summary %>
     </div>
+
+    <%= render 'projects', item: @item if @item.item_projects.any? %>
 
     <div class="pf_contact">
       <%= link_to 'Email me', "mailto:#{@item.email}", target: :_blank, class: 'btn btn-default' %>

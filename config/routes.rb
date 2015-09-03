@@ -19,4 +19,5 @@ Portfolio::Engine.routes.draw do
   end
 
   get '/:portfolio_key' => 'items#show_by_key', as: :show_portfolio
+  get '/:portfolio_key/projects/:id' => 'item_projects#show', as: :show_portfolio_project
 end

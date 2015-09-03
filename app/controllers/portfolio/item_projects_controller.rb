@@ -3,8 +3,8 @@ require_dependency "portfolio/application_controller"
 module Portfolio
   class ItemProjectsController < ApplicationController
     before_action :set_item_project, only: [:show, :edit, :update, :destroy]
-    before_action :set_item
-    before_action Portfolio.auth_action
+    before_action :set_item, except: [:show]
+    before_action Portfolio.auth_action, except: [:show]
 
     layout 'portfolio/admin'
 
@@ -15,6 +15,8 @@ module Portfolio
 
     # GET /item_projects/1
     def show
+      @item = Item.find_by(key: params[:portfolio_key])
+      render layout: 'portfolio/portfolio'
     end
 
     # GET /item_projects/new

@@ -1,0 +1,16 @@
+
+<div class="top_title">
+  <%= link_to image_tag(@item.avatar.url(:thumb), class: :pf_avatar), show_portfolio_path(@item.key) if @item.avatar.file? %>
+  <span class="title">
+    <%= @item.title %>
+  </span>
+</div>
+<%= render 'portfolio/items/header_menu' %>
+
+<h1><%= @item_project.name %></h1>
+
+<%= image_tag @item_project.default_image_url(:large) %>
+
+<div class="project_description">
+  <%= @item_project.description %>
+</div>

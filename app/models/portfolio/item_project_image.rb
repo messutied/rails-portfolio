@@ -1,11 +1,18 @@
 module Portfolio
   class ItemProjectImage < ActiveRecord::Base
-    has_attached_file :image, :styles => { large: '700x700>', medium: '300x300>', thumb: '150x150>' }
+    has_attached_file :image,
+      styles: { 
+        large: '700x700>', 
+        medium: '300x300#', 
+        thumb: '150x150#'  
+      }
     validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
     validates :image, presence: true
 
     belongs_to :item_project
     after_save :set_only_one_default
+
+    scope :default, -> { where(default: true) }
 
     private
 
