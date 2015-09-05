@@ -24,7 +24,7 @@ module Portfolio
 
       def mount_engine
         route "\n  mount Portfolio::Engine, at: '/portfolio'\n"+
-              "  # root 'portfolio/items#default'\n\n"
+              "  # root 'portfolio/sites#default'\n\n"
       end
 
       def insert_javascript

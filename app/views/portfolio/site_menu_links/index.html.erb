@@ -1,0 +1,27 @@
+<h1>Listing Menu Links of "<%= @site.person_name %>"</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @site_menu_links.each do |item_menu_link| %>
+      <tr>
+        <td><%= item_menu_link.name %></td>
+        <td><%= item_menu_link.url %></td>
+        <td><%= link_to 'Edit', edit_site_site_menu_link_path(@site, item_menu_link) %></td>
+        <td><%= link_to 'Destroy', [@site, item_menu_link], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item menu link', new_site_site_menu_link_path, class: 'btn btn-primary' %>
+<%= link_to 'Back', [:edit, @site], class: 'btn btn-default' %>

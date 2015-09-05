@@ -1,0 +1,27 @@
+<h1>Listing Social Links of "<%= @site.person_name %>"</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User name</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @links.each do |portfolio_social_link| %>
+      <tr>
+        <td><%= portfolio_social_link.social_link.name %></td>
+        <td><%= portfolio_social_link.user_name %></td>
+        <td><%= link_to 'Edit', edit_site_site_social_link_path(@site, portfolio_social_link) %></td>
+        <td><%= link_to 'Destroy', site_site_social_link_path(@site, portfolio_social_link), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Social link', new_site_site_social_link_path(@site), class: 'btn btn-primary' %>
+<%= link_to 'Back', edit_site_path(@site), class: 'btn btn-default' %>

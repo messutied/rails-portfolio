@@ -1,0 +1,23 @@
+<%= form_for([@item, @item_project]) do |f| %>
+  <%= render 'portfolio/shared/form_errors', record: @item_project %>
+
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :url %><br>
+    <%= f.text_field :url, class: 'form-control'%>
+  </div>
+  <div class="actions">
+    <%= f.hidden_field :site_id %>
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to 'Back', [@item, :site_items], class: 'btn btn-default' %>
+  </div>
+<% end %>
+
+<%= render 'images' unless @item_project.new_record? %>

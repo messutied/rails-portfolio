@@ -22,7 +22,7 @@ And run `bundle install`.
 
 Run the following command:
 
-	rake portfolio:install
+	rails generate portfolio:install
 
 This will create:
 

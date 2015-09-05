@@ -4,20 +4,20 @@ Portfolio::Engine.routes.draw do
   end
   
   scope '/admin' do
-    resources :items do
-      resources :item_social_links
-      resources :item_menu_links
-      resources :item_projects do
-        resources :item_project_images do
+    resources :sites do
+      resources :site_social_links
+      resources :site_menu_links
+      resources :site_items do
+        resources :site_item_images do
           member { put :set_default }
         end
       end
     end
     resources :social_links
 
-    root 'items#index'
+    root 'sites#index'
   end
 
-  get '/:portfolio_key' => 'items#show_by_key', as: :show_portfolio
-  get '/:portfolio_key/projects/:id' => 'item_projects#show', as: :show_portfolio_project
+  get '/:portfolio_key' => 'sites#show_by_key', as: :show_portfolio
+  get '/:portfolio_key/projects/:id' => 'site_items#show', as: :show_portfolio_project
 end

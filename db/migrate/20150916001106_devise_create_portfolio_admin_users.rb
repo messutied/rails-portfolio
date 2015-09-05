@@ -1,7 +1,5 @@
 class DeviseCreatePortfolioAdminUsers < ActiveRecord::Migration
   def change
-    return unless Portfolio.auth_method == :portfolio_admin_user
-    
     create_table(:portfolio_admin_users) do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
