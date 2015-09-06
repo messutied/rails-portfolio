@@ -4,16 +4,18 @@ Portfolio::Engine.routes.draw do
   end
   
   scope '/admin' do
+    resources :social_links
     resources :sites do
       resources :site_social_links
       resources :site_menu_links
-      resources :site_items do
-        resources :site_item_images do
-          member { put :set_default }
+      Portfolio::SiteItem::SUBCLASSES.each do |resource_name|
+        resources resource_name.pluralize do
+          resources :site_item_images do
+            member { put :set_default }
+          end
         end
       end
     end
-    resources :social_links
 
     root 'sites#index'
   end

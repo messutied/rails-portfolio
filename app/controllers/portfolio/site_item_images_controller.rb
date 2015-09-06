@@ -8,7 +8,6 @@ module Portfolio
 
     layout 'portfolio/admin'
 
-    # POST /item_projects
     def create
       @image = SiteItemImage.new(image_params)
 
@@ -20,7 +19,6 @@ module Portfolio
       end
     end
 
-    # PATCH/PUT /item_projects/1
     def update
       if @image.update(image_params)
         redirect_to edit_project_path, notice: 'Image was successfully updated.'
@@ -34,25 +32,24 @@ module Portfolio
       redirect_to edit_project_path, notice: 'Image was successfully updated.'
     end
 
-    # DELETE /item_projects/1
     def destroy
       @image.destroy
       redirect_to edit_project_path, notice: 'Image was successfully destroyed.'
     end
 
     private
-      # Use callbacks to share common setup or constraints between actions.
       def set_image
         @image = SiteItemImage.find(params[:id])
       end
 
-      # Only allow a trusted parameter "white list" through.
       def image_params
         params.require(:site_item_image).permit(:site_item_id, :image, :default)
       end
 
       def set_project
-        @item_project = SiteItem.find params[:site_item_id]
+        if klass = SiteItem::SUBCLASSES.detect { |sc| params[:"#{sc}_id"].present? }
+          @item_project = "Portfolio::#{klass.camelize}".constantize.find params[:"#{klass}_id"]
+        end
       end
 
       def edit_project_path

@@ -62,7 +62,7 @@
     <%= link_to 'Back', sites_path, class: 'btn btn-default' %>
     <% unless @item.new_record? %>
     <%= link_to 'Preview', @item, class: 'btn btn-default' %>
-    <%= link_to "Projects (#{@item.site_items.count})", [@item, :site_items], class: 'btn btn-default' %>
+    <%= link_to "Projects (#{@item.site_projects.count})", [@item, :site_projects], class: 'btn btn-default' %>
     <%= link_to "Menu Links (#{@item.site_menu_links.count})", [@item, :site_menu_links], class: 'btn btn-default' %>
     <%= link_to "Social Links (#{@item.site_social_links.count})", [@item, :site_social_links], class: 'btn btn-default' %>
     <% end %>

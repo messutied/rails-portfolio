@@ -5,6 +5,7 @@ module Portfolio
 
     has_many :site_social_links, dependent: :delete_all
     has_many :site_menu_links, dependent: :delete_all
+    has_many :site_projects
     has_many :site_items, dependent: :delete_all
     after_update :set_only_one_default
 
