@@ -24,6 +24,11 @@ module Portfolio
       end
     end
 
+    # this is not always working for some reason
+    def self.subclasses_names
+      subclasses.map { |d| d.name.underscore.split('/').last }
+    end
+
     private
 
     def self.type_name
