@@ -1,25 +1,25 @@
-<% unless @item.nil? %>
-  <%= content_for :title, @item.person_name %>
+<% unless @site.nil? %>
+  <%= content_for :title, @site.person_name %>
 
   <div class="portfolio_container">
     <%= render 'header_menu' %>
 
-    <%= image_tag @item.avatar.url(:thumb), class: :pf_avatar if @item.avatar.file? %>
+    <%= image_tag @site.avatar.url(:thumb), class: :pf_avatar if @site.avatar.file? %>
 
-    <h1><%= @item.job_title %></h1>
+    <h1><%= @site.job_title %></h1>
 
     <div class="pf_summary">
-      <%= raw render_markdown @item.summary %>
+      <%= raw render_markdown @site.summary %>
     </div>
 
-    <%= render 'projects', item: @item if @item.site_items.any? %>
+    <%= render 'projects', item: @site if @site.site_items.any? %>
 
     <div class="pf_contact">
-      <%= link_to 'Email me', "mailto:#{@item.email}", target: :_blank, class: 'btn btn-default' %>
+      <%= link_to 'Email me', "mailto:#{@site.email}", target: :_blank, class: 'btn btn-default' %>
     </div>
 
     <div class="pf_social_links">
-      <% @item.site_social_links.each do |link| %>
+      <% @site.site_social_links.each do |link| %>
       <%= link_to image_tag(link.social_link.image(:medium)), link.url, 
           title: link.social_link.name, target: :_blank, 
           data: {toggle: 'tooltip', placement: 'top'} %>
@@ -27,7 +27,7 @@
     </div>
     
     <% if admin_user_signed_in? and not params[:preview] %>
-      <%= link_to 'Edit', [:edit, @item] %> |
+      <%= link_to 'Edit', [:edit, @site] %> |
       <%= link_to 'Back', sites_path %>
     <% end %>
   </div>

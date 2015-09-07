@@ -1,5 +1,5 @@
-<%= form_for([@item, @item_project]) do |f| %>
-  <%= render 'portfolio/shared/form_errors', record: @item_project %>
+<%= form_for([@site, @item]) do |f| %>
+  <%= render 'portfolio/shared/form_errors', record: @item %>
 
   <div class="form-group">
     <%= f.label :title %><br>
@@ -16,8 +16,8 @@
   <div class="actions">
     <%= f.hidden_field :site_id %>
     <%= f.submit class: 'btn btn-primary' %>
-    <%= link_to 'Back', [@item, @resource_name_p], class: 'btn btn-default' %>
+    <%= link_to 'Back', [@site, @resource_name_p], class: 'btn btn-default' %>
   </div>
 <% end %>
 
-<%= render 'images' unless @item_project.new_record? %>
+<%= render 'images' unless @item.new_record? %>

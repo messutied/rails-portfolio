@@ -1,4 +1,4 @@
-<h1>Listing <%= @resource_name.split('_').last.pluralize.downcase %> of "<%= @item.person_name %>"</h1>
+<h1>Listing <%= @resource_name.split('_').last.pluralize.downcase %> of "<%= @site.person_name %>"</h1>
 
 <table class="table">
   <thead>
@@ -12,14 +12,14 @@
   </thead>
 
   <tbody>
-    <% @item_projects.each do |item_project| %>
+    <% @items.each do |item| %>
       <tr>
-        <td><%= item_project.title %></td>
-        <td><%= item_project.body %></td>
-        <td><%= item_project.url %></td>
-        <td><%= item_project.site_item_images.count %></td>
-        <td><%= link_to 'Edit', [:edit, @item, item_project] %></td>
-        <td><%= link_to 'Destroy', [@item, item_project], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= item.title %></td>
+        <td><%= item.body %></td>
+        <td><%= item.url %></td>
+        <td><%= item.site_item_images.count %></td>
+        <td><%= link_to 'Edit', [:edit, @site, item] %></td>
+        <td><%= link_to 'Destroy', [@site, item], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 <br>
 
 <%= link_to "New #{@resource_name.humanize.downcase}", [:new, :site, @resource_name], class: 'btn btn-primary' %>
-<%= link_to 'Back', [:edit, @item], class: 'btn btn-default' %>
+<%= link_to 'Back', [:edit, @site], class: 'btn btn-default' %>
