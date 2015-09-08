@@ -72,7 +72,7 @@ module Portfolio
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def item_params
-        params.require(:site).permit(:key, :job_title, :summary, :avatar, :default, :email, :person_name)
+        params.require(:site).permit(:key, :job_title, :summary, :avatar, :default, :email, :person_name, :greetings)
       end
   end
 end

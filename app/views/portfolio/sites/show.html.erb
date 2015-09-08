@@ -6,7 +6,7 @@
 
     <%= image_tag @site.avatar.url(:thumb), class: :pf_avatar if @site.avatar.file? %>
 
-    <h1><%= @site.job_title %></h1>
+    <h1><%= unless_blank @site.greetings, 'Greetings' %></h1>
 
     <div class="pf_summary">
       <%= raw render_markdown @site.summary %>
