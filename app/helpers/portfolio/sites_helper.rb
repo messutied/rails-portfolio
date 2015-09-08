@@ -10,5 +10,10 @@ module Portfolio
     def unless_blank attribute, name
       attribute.blank? ? "<Empty #{name}>" : attribute
     end
+
+    def item_path item
+      send "show_portfolio_#{item.class.type_name}_path", 
+           item.site.key, item.id, item.title.underscore
+    end
   end
 end

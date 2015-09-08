@@ -1,7 +1,8 @@
 <% unless @site.nil? %>
   <%= content_for :title, @site.person_name %>
+  <%= content_for :container_class, 'container_wide' %>
 
-  <div class="portfolio_container">
+  <div class="portfolio_site">
     <%= render 'header_menu' %>
 
     <%= image_tag @site.avatar.url(:thumb), class: :pf_avatar if @site.avatar.file? %>
@@ -12,7 +13,7 @@
       <%= raw render_markdown @site.summary %>
     </div>
 
-    <%= render 'projects', item: @site if @site.site_items.any? %>
+    <%= render 'portfolio/site_projects/list', item: @site if @site.site_items.any? %>
 
     <div class="pf_contact">
       <%= link_to 'Email me', "mailto:#{@site.email}", target: :_blank, class: 'btn btn-default' %>

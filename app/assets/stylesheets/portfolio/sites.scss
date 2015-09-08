@@ -1,44 +1,4 @@
-.container-portfolio {
-  position: relative;
-
-  .portfolio_header_menu {
-    position: absolute;
-    right: 10px;
-    top: 8px;
-
-    a {
-      margin-left: 10px;
-    }
-    a.active {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-  }
-}
-
-.top_title {
-  margin-top: 40px;
-  background-color: rgb(123, 159, 207);
-  color: white;
-  padding: 15px 0;
-  position: relative;
-
-  .pf_avatar {
-    position: absolute;
-    border-radius: 40px;
-    border: 3px solid #dfdfdf;
-    width: 80px;
-    top: -8px;
-    left: 8px;
-  }
-
-  .title {
-    margin-left: 100px;
-    font-size: 1.5em;
-  }
-}
-
-.portfolio_container {
+.portfolio .portfolio_site {
   text-align: center;
   padding-top: 30px;
   position: relative;
@@ -112,8 +72,4 @@
       margin: 10px 5px 0 5px;
     }
   }
-}
-
-#portfolio_item_summary {
-  height: 300px;
 }

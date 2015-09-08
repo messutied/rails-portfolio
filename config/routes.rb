@@ -20,6 +20,11 @@ Portfolio::Engine.routes.draw do
     root 'sites#index'
   end
 
+  Portfolio::SiteItem::SUBCLASSES.each do |resource_name|
+    resource_name = resource_name.split('_').last
+    res = resource_name.pluralize
+    get "/:portfolio_key/#{res}/:id-:title" => "site_#{res}#show", as: "show_portfolio_#{resource_name}"
+  end
+
   get '/:portfolio_key' => 'sites#show_by_key', as: :show_portfolio
-  get '/:portfolio_key/projects/:id' => 'site_items#show', as: :show_portfolio_project
 end

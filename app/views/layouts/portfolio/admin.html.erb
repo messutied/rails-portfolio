@@ -36,10 +36,10 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
     <%= javascript_include_tag "application" %>
   </head>
-  <body>
+  <body class="portfolio-admin">
     <%= render 'portfolio/shared/header_menu' if admin_user_signed_in? %>
 
-    <div class="container admin-portfolio">
+    <div class="container">
       <%= bootstrap_flash %>
       <%= yield %>
     </div>

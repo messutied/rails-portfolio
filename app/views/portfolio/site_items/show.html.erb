@@ -2,15 +2,15 @@
 <div class="top_title">
   <%= link_to image_tag(@site.avatar.url(:thumb), class: :pf_avatar), show_portfolio_path(@site.key) if @site.avatar.file? %>
   <span class="title">
-    <%= @site.title %>
+    <%= @site.job_title %>
   </span>
 </div>
-<%= render 'portfolio/items/header_menu' %>
+<%= render 'portfolio/sites/header_menu' %>
 
-<h1><%= @item.name %></h1>
+<h1><%= @item.title %></h1>
 
 <%= image_tag @item.default_image_url(:large) %>
 
 <div class="project_description">
-  <%= @item.description %>
+  <%= @item.body %>
 </div>
