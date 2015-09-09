@@ -1,16 +1,54 @@
+<%= content_for :container_class, 'portfolio_site_item' %>
 
 <div class="top_title">
   <%= link_to image_tag(@site.avatar.url(:thumb), class: :pf_avatar), show_portfolio_path(@site.key) if @site.avatar.file? %>
   <span class="title">
-    <%= @site.job_title %>
+    <%= @site.person_name %>
   </span>
 </div>
 <%= render 'portfolio/sites/header_menu' %>
 
+<hr>
 <h1><%= @item.title %></h1>
+<hr>
 
-<%= image_tag @item.default_image_url(:large) %>
-
-<div class="project_description">
-  <%= @item.body %>
+<div class="row">
+  <div class="col-xs-12 col-sm-5 col-md-3">
+    <div class="project_description">
+      <%= @item.body %>
+    </div>
+    <a href="<%= @item.url %>" class="btn btn-default go_to_site">
+      Go to site
+      <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+    </a>
+    <%= link_to 'Edit', [:edit, @site, @item] if admin_user_signed_in? %>
+  </div>
+  <div class="col-xs-12 col-sm-7 col-md-9">
+    <div class="main_image text-center">
+      <%= image_tag @default_image.image(:large), class: 'img-responsive' %>
+    </div>
+    <% if @item.site_item_images.count > 1 %>
+    <hr>
+    <div class="image_thumbnails">
+      <% @item.site_item_images.each do |img| %>
+        <%= link_to(
+            image_tag(img.image(:thumb), class: 'img-responsive'),
+            '#', class: "#{img == @default_image ? 'active' : ''}",
+            data: { large_img: img.image(:large) }
+            )
+        %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
 </div>
+
+<script>
+  $('.image_thumbnails a').click(function(evt) {
+    var el = $(this);
+    evt.preventDefault();
+    $('.main_image img').prop('src', el.data('large-img'));
+    $('.image_thumbnails a').removeClass('active');
+    el.addClass('active');
+  });
+</script>

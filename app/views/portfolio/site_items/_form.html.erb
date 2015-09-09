@@ -24,6 +24,7 @@
   <div class="actions">
     <%= f.hidden_field :site_id %>
     <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to 'Show', item_path(@item), class: 'btn btn-default' %>
     <%= link_to 'Back', [@site, @resource_name_p], class: 'btn btn-default' %>
   </div>
 <% end %>

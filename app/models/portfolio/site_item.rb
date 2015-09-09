@@ -15,13 +15,16 @@ module Portfolio
 
     default_scope -> { self.of_type self.type_name unless self.type_name == 'item' }
 
-    def default_image_url style=:medium
+    def default_image
       if site_item_images.empty?
         nil
       else
-        img = site_item_images.default.first || site_item_images.first
-        img.image.url(style)
+        site_item_images.default.first || site_item_images.first
       end
+    end
+
+    def default_image_url style=:medium
+      default_image.image.url(style)
     end
 
     # this is not always working for some reason

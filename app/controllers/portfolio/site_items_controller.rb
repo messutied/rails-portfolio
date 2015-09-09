@@ -52,6 +52,7 @@ module Portfolio
     private
       def set_item
         @item = resource.find(params[:id])
+        @default_image = @item.default_image if @item
       end
 
       def item_project_params

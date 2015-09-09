@@ -31,12 +31,16 @@ h1, h2, h3 { font-weight: 600; }
     &.container_wide {
       width: auto;
       padding-left: 0;
+
+      .portfolio_header_menu {
+        right: 10px;
+      }
     }
 
     .portfolio_header_menu {
       position: absolute;
-      right: 10px;
       top: 8px;
+      right: 15px;
 
       a {
         margin-left: 10px;

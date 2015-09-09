@@ -1,23 +1,38 @@
-.portfolio {
+.portfolio .portfolio_site_item {
   .top_title {
-    margin-top: 40px;
-    background-color: rgb(123, 159, 207);
-    color: white;
-    padding: 15px 0;
     position: relative;
 
     .pf_avatar {
-      position: absolute;
-      border-radius: 40px;
+      border-radius: 20px;
       border: 3px solid #dfdfdf;
-      width: 80px;
-      top: -8px;
-      left: 8px;
+      width: 40px;
+      position: absolute;
+      top: -5px;
     }
 
     .title {
-      margin-left: 100px;
+      margin-left: 50px;
       font-size: 1.5em;
+    }
+  }
+
+  .main_image img {
+    margin: 0 auto;
+  }
+  .go_to_site {
+    margin-top: 10px;
+  }
+  .image_thumbnails {
+    margin-top: 20px;
+
+    a {
+      float: left;
+      margin-right: 10px;
+      border: 2px solid lightgrey;
+    }
+    a.active {
+      opacity: .5px;
+      border-color: grey;
     }
   }
 }

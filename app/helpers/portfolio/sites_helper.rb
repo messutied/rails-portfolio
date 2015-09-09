@@ -13,7 +13,7 @@ module Portfolio
 
     def item_path item
       send "show_portfolio_#{item.class.type_name}_path", 
-           item.site.key, item.id, item.title.underscore
+           item.site.key, item.id, item.title.parameterize('_')
     end
   end
 end
