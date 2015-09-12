@@ -3,13 +3,19 @@
 <div class="top_title">
   <%= link_to image_tag(@site.avatar.url(:thumb), class: :pf_avatar), show_portfolio_path(@site.key) if @site.avatar.file? %>
   <span class="title">
-    <%= @site.person_name %>
+    <%= link_to @site.person_name, show_portfolio_path(@site.key) %>
   </span>
 </div>
 <%= render 'portfolio/sites/header_menu' %>
 
 <hr>
-<h1><%= @item.title %></h1>
+<div class="item_title">
+  <h1><%= @item.title %></h1>
+  <a href="#" class="go_back">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    Back to portfolio
+  </a>
+</div>
 <hr>
 
 <div class="row">
@@ -28,18 +34,25 @@
       <%= image_tag @default_image.image(:large), class: 'img-responsive' %>
     </div>
     <% if @item.site_item_images.count > 1 %>
-    <hr>
+    
+    <% end %>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-7 col-md-9   col-sm-offset-5 col-md-offset-3">
     <div class="image_thumbnails">
       <% @item.site_item_images.each do |img| %>
         <%= link_to(
-            image_tag(img.image(:thumb), class: 'img-responsive'),
+            image_tag(img.image(:thumb), class: ''),
             '#', class: "#{img == @default_image ? 'active' : ''}",
             data: { large_img: img.image(:large) }
             )
         %>
       <% end %>
     </div>
-    <% end %>
   </div>
 </div>
 

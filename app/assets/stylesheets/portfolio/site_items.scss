@@ -13,6 +13,17 @@
     .title {
       margin-left: 50px;
       font-size: 1.5em;
+      a { color: black; }
+    }
+  }
+
+  .item_title {
+    position: relative;
+
+    .go_back {
+      position: absolute;
+      right: 0;
+      top: 10px;
     }
   }
 
@@ -24,11 +35,16 @@
   }
   .image_thumbnails {
     margin-top: 20px;
+    text-align: center;
 
     a {
-      float: left;
+      display: inline-block;
       margin-right: 10px;
-      border: 2px solid lightgrey;
+      border: 3px solid lightgrey;
+
+      img {
+        margin: 2px;
+      }
     }
     a.active {
       opacity: .5px;
