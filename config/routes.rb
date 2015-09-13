@@ -24,6 +24,7 @@ Portfolio::Engine.routes.draw do
     resource_name = resource_name.split('_').last
     res = resource_name.pluralize
     get "/:portfolio_key/#{res}/:id-:title" => "site_#{res}#show", as: "show_portfolio_#{resource_name}"
+    get "/:portfolio_key/#{res}" => "site_#{res}#index", as: "portfolio_#{res}"
   end
 
   get '/:portfolio_key' => 'sites#show_by_key', as: :show_portfolio

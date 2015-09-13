@@ -1,20 +1,16 @@
-<nav class="navbar navbar-inverse navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'Portfolio Admin', admin_root_path, class: 'navbar-brand' %>
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><%= link_to 'Portfolios', [:admin, :sites] %></li>
-        <li><%= link_to 'Social Links', [:admin, :social_links] %></li>
-        <li><%= link_to 'Sign out', destroy_admin_user_session_path, method: :delete %></li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
-</nav>
+<% if @site.site_menu_links.count > 0 %>
+<div class="portfolio_header_menu">
+  <%= link_to 'Home', show_portfolio_path(@site.key), class: 'active' %>
+  
+  <% Portfolio::SiteItem::SUBCLASSES.each do |resource_name| %>
+    <% if @site.send(resource_name.pluralize).count > 0 %>
+      <% name = resource_name.split('_').last.pluralize %>
+      <%= link_to name.humanize, send("portfolio_#{name}_path", @site.key) %>
+    <% end %>
+  <% end %>
+  
+  <% @site.site_menu_links.each do |link| %>
+    <%= link_to link.name, link.url %>
+  <% end %>
+</div>
+<% end %>

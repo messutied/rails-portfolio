@@ -38,7 +38,7 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body class="portfolio">
-    <%= render 'portfolio/shared/header_menu' if admin_user_signed_in? and not params[:preview] %>
+    <%= render 'portfolio/shared/admin_header' if admin_user_signed_in? and not params[:preview] %>
 
     <div class="container <%= yield(:container_class) %>">
       <%= bootstrap_flash %>

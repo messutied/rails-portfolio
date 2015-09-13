@@ -37,7 +37,7 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body class="portfolio-admin">
-    <%= render 'portfolio/shared/header_menu' if admin_user_signed_in? %>
+    <%= render 'portfolio/shared/admin_header' if admin_user_signed_in? %>
 
     <div class="container">
       <%= bootstrap_flash %>

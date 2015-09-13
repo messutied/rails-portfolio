@@ -6,12 +6,13 @@ module Portfolio
     before_action :set_item, only: [:show, :edit, :update, :destroy]
     before_action :set_resource_name
 
+    layout 'portfolio/portfolio'
+
     def index
       @items = resource.where(site: @site)
     end
 
     def show
-      render layout: 'portfolio/portfolio'
     end
 
     private

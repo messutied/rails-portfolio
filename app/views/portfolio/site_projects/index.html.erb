@@ -1,0 +1,23 @@
+<%= content_for :container_class, 'portfolio_site_item' %>
+
+<%= render 'portfolio/shared/header' %>
+
+<div class="item_title">
+  <h1>Projects</h1>
+  <a href="<%= show_portfolio_path(@site.key) %>" class="go_back">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    Back to portfolio
+  </a>
+</div>
+<hr>
+
+<div class="container portfolio_projects">
+  <% @site.site_projects.each do |project| %>
+    <div class="col-md-4 col-xs-6">
+      <div class="project_container">
+        <%= link_to image_tag(project.default_image.image(:thumb)), item_path(project) %>
+        <%= link_to project.title, item_path(project), class: 'project_name' %>
+      </div>
+    </div>
+  <% end %>
+</div>

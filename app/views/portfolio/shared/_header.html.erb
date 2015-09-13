@@ -1,0 +1,8 @@
+<div class="top_title">
+  <%= link_to image_tag(@site.avatar.url(:thumb), class: :pf_avatar), show_portfolio_path(@site.key) if @site.avatar.file? %>
+  <span class="title">
+    <%= link_to @site.person_name, show_portfolio_path(@site.key) %>
+  </span>
+</div>
+<%= render 'portfolio/shared/header_menu' %>
+<hr>

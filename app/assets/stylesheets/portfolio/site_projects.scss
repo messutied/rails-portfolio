@@ -1,0 +1,24 @@
+.portfolio_projects {
+  max-width: 800px;
+  margin-bottom: 50px;
+
+  .project_container {
+    border: 1px solid lightgrey;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 5px;
+
+    a.project_name {
+      margin-top: 10px;
+      display: inline-block;
+    }
+  }
+
+  h2 {
+    margin-bottom: 1em;
+  }
+
+  img {
+    width: 100%;
+  }
+}

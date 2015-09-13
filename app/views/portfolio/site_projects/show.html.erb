@@ -1,19 +1,12 @@
 <%= content_for :container_class, 'portfolio_site_item' %>
 
-<div class="top_title">
-  <%= link_to image_tag(@site.avatar.url(:thumb), class: :pf_avatar), show_portfolio_path(@site.key) if @site.avatar.file? %>
-  <span class="title">
-    <%= link_to @site.person_name, show_portfolio_path(@site.key) %>
-  </span>
-</div>
-<%= render 'portfolio/sites/header_menu' %>
+<%= render 'portfolio/shared/header' %>
 
-<hr>
 <div class="item_title">
   <h1><%= @item.title %></h1>
-  <a href="#" class="go_back">
+  <a href="<%= portfolio_projects_path(@site.key) %>" class="go_back">
     <span class="glyphicon glyphicon-chevron-left"></span>
-    Back to portfolio
+    Back to projects
   </a>
 </div>
 <hr>
