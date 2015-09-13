@@ -27,7 +27,7 @@
       Go to site
       <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
     </a>
-    <%= link_to 'Edit', [:edit, @site, @item] if admin_user_signed_in? %>
+    <%= link_to 'Edit', [:edit, :admin, @site, @item] if admin_user_signed_in? %>
   </div>
   <div class="col-xs-12 col-sm-7 col-md-9">
     <div class="main_image text-center">

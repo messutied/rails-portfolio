@@ -3,7 +3,7 @@ Portfolio::Engine.routes.draw do
     devise_for :admin_users, class_name: 'Portfolio::AdminUser', module: :devise
   end
   
-  scope '/admin' do
+  namespace :admin do
     resources :social_links
     resources :sites do
       resources :site_social_links

@@ -1,4 +1,4 @@
-<%= form_for(@site, :html => { :multipart => true }) do |f| %>
+<%= form_for([:admin, @site], :html => { :multipart => true }) do |f| %>
   <%= render 'portfolio/shared/form_errors', record: @site %>
 
   <div class="row">
@@ -74,12 +74,12 @@
 
   <div class="actions">
     <%= f.submit class: 'btn btn-primary' %>
-    <%= link_to 'Back', sites_path, class: 'btn btn-default' %>
+    <%= link_to 'Back', [:admin, :sites], class: 'btn btn-default' %>
     <% unless @site.new_record? %>
-    <%= link_to 'Preview', @site, class: 'btn btn-default' %>
-    <%= link_to "Projects (#{@site.site_projects.count})", [@site, :site_projects], class: 'btn btn-default' %>
-    <%= link_to "Menu Links (#{@site.site_menu_links.count})", [@site, :site_menu_links], class: 'btn btn-default' %>
-    <%= link_to "Social Links (#{@site.site_social_links.count})", [@site, :site_social_links], class: 'btn btn-default' %>
+    <%= link_to 'Show', show_portfolio_path(@site.key), class: 'btn btn-default' %>
+    <%= link_to "Projects (#{@site.site_projects.count})", [:admin, @site, :site_projects], class: 'btn btn-default' %>
+    <%= link_to "Menu Links (#{@site.site_menu_links.count})", [:admin, @site, :site_menu_links], class: 'btn btn-default' %>
+    <%= link_to "Social Links (#{@site.site_social_links.count})", [:admin, @site, :site_social_links], class: 'btn btn-default' %>
     <% end %>
   </div>
 <% end %>

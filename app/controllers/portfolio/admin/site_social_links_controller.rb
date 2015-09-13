@@ -1,5 +1,5 @@
 module Portfolio
-  class SiteSocialLinksController < ApplicationController
+  class Admin::SiteSocialLinksController < ApplicationController
     before_action :set_link, only: [:show, :edit, :update, :destroy]
     before_action :set_site
     before_action Portfolio.auth_action
@@ -26,11 +26,9 @@ module Portfolio
 
       respond_to do |format|
         if @link.save
-          format.html { redirect_to site_site_social_links_path(@site), notice: 'Social link was successfully created.' }
-          format.json { render :show, status: :created, location: @link }
+          format.html { redirect_to [:admin, @site, :site_social_links], notice: 'Social link was successfully created.' }
         else
           format.html { render :new }
-          format.json { render json: @link.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -38,11 +36,9 @@ module Portfolio
     def update
       respond_to do |format|
         if @link.update(link_params)
-          format.html { redirect_to site_site_social_links_path(@site), notice: 'Social link was successfully updated.' }
-          format.json { render :show, status: :ok, location: @link }
+          format.html { redirect_to [:admin, @site, :site_social_links], notice: 'Social link was successfully updated.' }
         else
           format.html { render :edit }
-          format.json { render json: @link.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -50,8 +46,7 @@ module Portfolio
     def destroy
       @link.destroy
       respond_to do |format|
-        format.html { redirect_to site_site_social_links_url(@site), notice: 'Social link was successfully destroyed.' }
-        format.json { head :no_content }
+        format.html { redirect_to [:admin, @site, :site_social_links], notice: 'Social link was successfully destroyed.' }
       end
     end
 

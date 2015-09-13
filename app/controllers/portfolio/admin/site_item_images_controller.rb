@@ -1,7 +1,7 @@
 require_dependency "portfolio/application_controller"
 
 module Portfolio
-  class SiteItemImagesController < ApplicationController
+  class Admin::SiteItemImagesController < ApplicationController
     before_action :set_image, only: [:update, :destroy, :set_default]
     before_action :set_project
     before_action Portfolio.auth_action
@@ -53,7 +53,7 @@ module Portfolio
       end
 
       def edit_project_path
-        [:edit, @item_project.site, @item_project]
+        [:edit, :admin, @item_project.site, @item_project]
       end
   end
 end

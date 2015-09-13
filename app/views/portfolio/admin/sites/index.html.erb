@@ -1,0 +1,35 @@
+<h1>Listing Portfolio Items</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Person</th>
+      <th>Projects</th>
+      <th>Menu Links</th>
+      <th>Social Links</th>
+      <th>Default</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sites.each do |item| %>
+      <tr>
+        <td><%= item.key %></td>
+        <td><%= item.person_name %></td>
+        <td><%= link_to item.site_items.count, [:admin, item, :site_projects] %></td>
+        <td><%= link_to item.site_menu_links.count, [:admin, item, :site_menu_links] %></td>
+        <td><%= link_to item.site_social_links.count, [:admin, item, :site_social_links] %></td>
+        <td><%= item.default ? 'Yes' : 'No' %></td>
+        <td><%= link_to 'Show', show_portfolio_path(item.key) %></td>
+        <td><%= link_to 'Edit', [:edit, :admin, item] %></td>
+        <td><%= link_to 'Destroy', [:admin, item], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New portfolio item', [:new, :admin, :site], class: 'btn btn-primary' %>

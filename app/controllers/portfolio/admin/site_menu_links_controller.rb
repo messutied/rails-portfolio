@@ -1,7 +1,7 @@
 require_dependency "portfolio/application_controller"
 
 module Portfolio
-  class SiteMenuLinksController < ApplicationController
+  class Admin::SiteMenuLinksController < ApplicationController
     before_action :set_site_menu_link, only: [:show, :edit, :update, :destroy]
     before_action :set_site
     before_action Portfolio.auth_action
@@ -26,7 +26,7 @@ module Portfolio
       @site_menu_link = SiteMenuLink.new(site_menu_link_params)
 
       if @site_menu_link.save
-        redirect_to site_site_menu_links_path(@site), notice: 'Item menu link was successfully created.'
+        redirect_to [:admin, @site, :site_menu_links], notice: 'Item menu link was successfully created.'
       else
         render :new
       end
@@ -34,7 +34,7 @@ module Portfolio
 
     def update
       if @site_menu_link.update(site_menu_link_params)
-        redirect_to site_site_menu_links_path(@site), notice: 'Item menu link was successfully updated.'
+        redirect_to [:admin, @site, :site_menu_links], notice: 'Item menu link was successfully updated.'
       else
         render :edit
       end
@@ -42,7 +42,7 @@ module Portfolio
 
     def destroy
       @site_menu_link.destroy
-      redirect_to site_site_menu_links_path(@site), notice: 'Item menu link was successfully destroyed.'
+      redirect_to [:admin, @site, :site_menu_links], notice: 'Item menu link was successfully destroyed.'
     end
 
     private

@@ -27,8 +27,8 @@
   </div>
   
   <% if admin_user_signed_in? and not params[:preview] %>
-    <%= link_to 'Edit', [:edit, @site] %> |
-    <%= link_to 'Back', sites_path %>
+    <%= link_to 'Edit', [:edit, :admin, @site] %> |
+    <%= link_to 'Back', [:admin, :sites] %>
   <% end %>
 <% else %>
   <div class="empty-portfolio">Nothing in here yet!</div>

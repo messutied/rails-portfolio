@@ -1,4 +1,4 @@
-<%= form_for([@site, @link], as: :social_link) do |f| %>
+<%= form_for([:admin, @site, @link], as: :social_link) do |f| %>
   <%= render 'portfolio/shared/form_errors', record: @link %>
 
   <div class="form-group">
@@ -13,6 +13,6 @@
   <%= f.hidden_field :site_id %>
   <div class="actions">
     <%= f.submit class: 'btn btn-primary' %>
-    <%= link_to 'Back', site_site_social_links_path, class: 'btn btn-default' %>
+    <%= link_to 'Back', [:admin, @site, :site_social_links], class: 'btn btn-default' %>
   </div>
 <% end %>

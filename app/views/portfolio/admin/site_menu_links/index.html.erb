@@ -14,8 +14,8 @@
       <tr>
         <td><%= item_menu_link.name %></td>
         <td><%= item_menu_link.url %></td>
-        <td><%= link_to 'Edit', edit_site_site_menu_link_path(@site, item_menu_link) %></td>
-        <td><%= link_to 'Destroy', [@site, item_menu_link], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', [:edit, :admin, @site, item_menu_link] %></td>
+        <td><%= link_to 'Destroy', [:admin, @site, item_menu_link], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,5 +23,5 @@
 
 <br>
 
-<%= link_to 'New Item menu link', new_site_site_menu_link_path, class: 'btn btn-primary' %>
-<%= link_to 'Back', [:edit, @site], class: 'btn btn-default' %>
+<%= link_to 'New Item menu link', [:new, :admin, @site, :site_menu_link], class: 'btn btn-primary' %>
+<%= link_to 'Back', [:edit, :admin, @site], class: 'btn btn-default' %>

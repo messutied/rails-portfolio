@@ -13,14 +13,14 @@
       <tr>
         <td><%= image_tag image.image.url(:thumb) %></td>
         <td><%= image.default ? 'Yes' : 'No' %></td>
-        <td><%= link_to 'Set Default', [:set_default, @site, @item, image], method: :put unless image.default %></td>
-        <td><%= link_to 'Destroy', [@site, @item, image], method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <td><%= link_to 'Set Default', [:set_default, :admin, @site, @item, image], method: :put unless image.default %></td>
+        <td><%= link_to 'Destroy', [:admin, @site, @item, image], method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= form_for [@site, @item, @image] do |f| %>
+<%= form_for [:admin, @site, @item, @image] do |f| %>
   <%= render 'portfolio/shared/form_errors', record: @image %>
 
   <div class="row">
