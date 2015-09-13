@@ -6,14 +6,23 @@ module Portfolio
 
     before_create :set_type
 
-    SUBCLASSES = %w(site_project)
-
     scope :of_type, ->(type_name) {
       type = SiteItemType.find_by name: type_name.pluralize
       type ? where(site_item_type: type) : self.none
     }
 
-    default_scope -> { self.of_type self.type_name unless self.type_name == 'item' }
+    def self.subclasses
+      [SiteProject]
+    end
+
+    def self.display_name
+      nil
+    end
+
+    # this is not always working for some reason
+    def self.subclasses_names
+      subclasses.map { |d| d.name.underscore.split('/').last }
+    end
 
     def default_image
       if site_item_images.empty?
@@ -27,12 +36,11 @@ module Portfolio
       default_image.image.url(style)
     end
 
-    # this is not always working for some reason
-    def self.subclasses_names
-      subclasses.map { |d| d.name.underscore.split('/').last }
-    end
-
     private
+
+    def self.resource_name
+      self.name.underscore.split('/').last
+    end
 
     def self.type_name
       self.name.underscore.split('/').last.split('_').last

@@ -2,10 +2,10 @@
 <div class="portfolio_header_menu">
   <%= link_to 'Home', show_portfolio_path(@site.key), class: 'active' %>
   
-  <% Portfolio::SiteItem::SUBCLASSES.each do |resource_name| %>
-    <% if @site.send(resource_name.pluralize).count > 0 %>
-      <% name = resource_name.split('_').last.pluralize %>
-      <%= link_to name.humanize, send("portfolio_#{name}_path", @site.key) %>
+  <% Portfolio::SiteItem.subclasses.each do |klass| %>
+    <% if klass.where(site: @site).count > 0 %>
+      <% name = klass.type_name.pluralize %>
+      <%= link_to klass.display_name || name.humanize, send("portfolio_#{name}_path", @site.key) %>
     <% end %>
   <% end %>
   

@@ -47,8 +47,8 @@ module Portfolio
       end
 
       def set_project
-        if klass = SiteItem::SUBCLASSES.detect { |sc| params[:"#{sc}_id"].present? }
-          @item_project = "Portfolio::#{klass.camelize}".constantize.find params[:"#{klass}_id"]
+        if klass = SiteItem.subclasses.detect { |kl| params[:"#{kl.resource_name}_id"].present? }
+          @item_project = klass.find params[:"#{klass.resource_name}_id"]
         end
       end
 
