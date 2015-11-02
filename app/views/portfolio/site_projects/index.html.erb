@@ -1,13 +1,13 @@
-<%= content_for :title, "Projects | #{@site.person_name}" %>
+<%= content_for :title, "Portfolio | #{@site.person_name}" %>
 <%= content_for :container_class, 'portfolio_site_item' %>
 
 <%= render 'portfolio/shared/header' %>
 
 <div class="item_title">
-  <h1>Projects</h1>
+  <h1>Portfolio</h1>
   <a href="<%= show_portfolio_path(@site.key) %>" class="go_back">
     <span class="glyphicon glyphicon-chevron-left"></span>
-    Back to portfolio
+    Back
   </a>
 </div>
 <hr>
