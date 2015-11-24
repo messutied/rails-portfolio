@@ -21,7 +21,7 @@ module Portfolio
 
       respond_to do |format|
         if @site.save
-          format.html { redirect_to [:admin, @site], notice: 'Site was successfully created.' }
+          format.html { redirect_to show_portfolio_path(@site.key), notice: 'Site was successfully created.' }
         else
           format.html { render :new }
         end
@@ -31,7 +31,7 @@ module Portfolio
     def update
       respond_to do |format|
         if @site.update(item_params)
-          format.html { redirect_to [:admin, @site], notice: 'Site was successfully updated.' }
+          format.html { redirect_to show_portfolio_path(@site.key), notice: 'Site was successfully updated.' }
         else
           format.html { render :edit }
         end
