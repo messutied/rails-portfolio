@@ -1,0 +1,26 @@
+<h1>Listing Admin Site Item Categories</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_site_item_categories.each do |admin_site_item_category| %>
+      <tr>
+        <td><%= admin_site_item_category.name %></td>
+        <td><%= admin_site_item_category.key %></td>
+        <td><%= link_to 'Edit', edit_admin_site_item_category_path(admin_site_item_category) %></td>
+        <td><%= link_to 'Destroy', [:admin, admin_site_item_category], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Site item category', new_admin_site_item_category_path, class: 'btn btn-primary' %>

@@ -4,6 +4,7 @@ Portfolio::Engine.routes.draw do
   end
   
   namespace :admin do
+    resources :site_item_categories
     resources :social_links
     resources :sites do
       resources :site_social_links

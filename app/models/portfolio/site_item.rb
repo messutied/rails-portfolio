@@ -2,6 +2,7 @@ module Portfolio
   class SiteItem < ActiveRecord::Base
     belongs_to :site
     belongs_to :site_item_type
+    belongs_to :site_item_category
     has_many :site_item_images, dependent: :delete_all
 
     before_create :set_type

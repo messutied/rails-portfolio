@@ -3,6 +3,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Category</th>
       <th>Name</th>
       <th>Url</th>
       <th>Images</th>
@@ -13,6 +14,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><%= item.site_item_category.name %></td>
         <td><%= item.title %></td>
         <td><%= item.url %></td>
         <td><%= item.site_item_images.count %></td>

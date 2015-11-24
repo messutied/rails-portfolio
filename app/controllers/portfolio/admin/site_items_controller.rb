@@ -51,7 +51,7 @@ module Portfolio
       end
 
       def item_project_params
-        params.require(@resource_name).permit(:site_id, :title, :body, :url)
+        params.require(@resource_name).permit(:site_id, :title, :site_item_category_id, :body, :url)
       end
 
       def set_site

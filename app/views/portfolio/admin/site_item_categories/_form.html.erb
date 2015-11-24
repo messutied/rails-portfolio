@@ -1,0 +1,19 @@
+<%= form_for([:admin, @admin_site_item_category]) do |f| %>
+  <%= render 'portfolio/shared/form_errors', record: @admin_site_item_category %>
+      
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :key %><br>
+    <%= f.text_field :key, class: 'form-control',
+        placeholder: 'Leave empty to auto-generate based on the name' %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to 'Back', :back, class: 'btn btn-default' %>
+  </div>
+<% end %>
