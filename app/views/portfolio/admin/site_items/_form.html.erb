@@ -2,21 +2,21 @@
   <%= render 'portfolio/shared/form_errors', record: @item %>
 
   <div class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-12 col-md-4">
       <div class="form-group">
         <%= f.label :title %>
         <%= f.text_field :title, class: 'form-control' %>
       </div>
     </div>
     
-    <div class="col-xs-4">
+    <div class="col-xs-12 col-md-4">
       <div class="form-group">
         <%= f.label :url %>
         <%= f.text_field :url, class: 'form-control'%>
       </div>
     </div>
     
-    <div class="col-xs-3">
+    <div class="col-xs-12 col-md-2">
       <div class="form-group">
         <%= f.label :site_item_category_id %>
         <%= f.select :site_item_category_id, 
@@ -25,14 +25,9 @@
       </div>
     </div>
     
-    <div class="col-xs-1">
-      <div class="checkbox">
-        <label>
-          <br>
-          <%= f.check_box :featured %>
-          Featured
-        </label>
-      </div>
+    <div class="col-xs-12 col-md-2">
+      <br>
+      <%= link_to 'Edit categories', admin_site_item_categories_path, target: 'categories', class: 'btn btn-link' %>
     </div>
   </div>
 
@@ -40,6 +35,17 @@
     <%= f.label :body %>
     <%= f.text_area :body, class: 'form-control pf_text_area' %>
   </div>
+  
+  <div class="form-group">
+    <div class="checkbox">
+      <label>
+        <br>
+        <%= f.check_box :featured %>
+        Featured
+      </label>
+    </div>
+  </div>
+  
   <div class="actions">
     <%= f.hidden_field :site_id %>
     <%= f.submit class: 'btn btn-primary' %>
