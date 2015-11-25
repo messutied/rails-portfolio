@@ -1,3 +1,15 @@
+.portfolio .portfolio_site_project {
+  @extend .portfolio_site_item;
+  
+  .project_tags {
+    margin: 15px 0 20px 0;
+    
+    .label {
+      margin-right: 5px;
+    }
+  }
+}
+
 .portfolio_projects {
   max-width: 800px;
   margin-bottom: 50px;
@@ -24,5 +36,10 @@
 
   img {
     width: 100%;
+  }
+  
+  .see_all {
+    margin-top: 20px;
+    text-align: center;
   }
 }

@@ -1,5 +1,5 @@
 <%= content_for :title, "#{@item.title} | #{@site.person_name}" %>
-<%= content_for :container_class, 'portfolio_site_item' %>
+<%= content_for :container_class, 'portfolio_site_project' %>
 
 <%= render 'portfolio/shared/header' %>
 
@@ -7,7 +7,7 @@
   <h1><%= @item.title %></h1>
   <a href="<%= portfolio_projects_path(@site.key) %>" class="go_back">
     <span class="glyphicon glyphicon-chevron-left"></span>
-    Back to projects
+    Back to portfolio
   </a>
 </div>
 <hr>
@@ -17,10 +17,18 @@
     <div class="project_description">
       <%= @item.body %>
     </div>
+    
+    <div class="project_tags">
+      <% @item.site_item_tags.each do |tag| %>
+        <%= link_to tag.name, portfolio_projects_tagged_path(@item.site.key, tag.key), class: 'label label-default' %>
+      <% end %>
+    </div>
+    
     <a href="<%= @item.url %>" class="btn btn-default go_to_site">
       Go to site
       <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
     </a>
+    
     <%= link_to 'Edit', [:edit, :admin, @site, @item] if admin_user_signed_in? %>
   </div>
   <div class="col-xs-12 col-sm-7 col-md-9">

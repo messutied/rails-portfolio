@@ -28,6 +28,7 @@ Portfolio::Engine.routes.draw do
     dname = (klass.display_name || res).downcase
     get "/:portfolio_key/#{dname}/:id-:title" => "site_#{res}#show", as: "show_portfolio_#{resource_name}"
     get "/:portfolio_key/#{dname}" => "site_#{res}#index", as: "portfolio_#{res}"
+    get "/:portfolio_key/#{dname}/tagged/:tag_key" => "site_#{res}#index", as: "portfolio_#{res}_tagged"
   end
 
   get '/:portfolio_key' => 'sites#show_by_key', as: :show_portfolio

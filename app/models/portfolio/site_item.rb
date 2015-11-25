@@ -14,6 +14,8 @@ module Portfolio
     }
     scope :uncategorized, -> { where site_item_category_id: nil }
     scope :featured, -> { where featured: true }
+    scope :tagged_with, ->(tag) { 
+      joins(:site_item_tags).where('portfolio_site_item_tags.id = ?', tag.id) }
     
     def self.group_by_categories
       SiteItemCategory.where(id: self.select(:site_item_category_id))

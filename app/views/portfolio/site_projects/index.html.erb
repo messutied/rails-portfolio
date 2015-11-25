@@ -1,23 +1,34 @@
-<%= content_for :title, "Portfolio | #{@site.person_name}" %>
+<%= content_for :title, "Portfolio | #{@site.person_name}"+(@tag ? " / #{@tag.name}" : '') %>
 <%= content_for :container_class, 'portfolio_site_item' %>
 
 <%= render 'portfolio/shared/header' %>
 
 <div class="item_title">
-  <h1>Portfolio</h1>
-  <a href="<%= show_portfolio_path(@site.key) %>" class="go_back">
+  <h1>
+    Portfolio <%= @tag ? " / #{@tag.name}" : '' %>
+  </h1>
+  <%= link_to :back, class: 'go_back' do %>
     <span class="glyphicon glyphicon-chevron-left"></span>
     Back
-  </a>
+  <% end %>
 </div>
 <hr>
 
 <div class="container portfolio_projects">
-  <% @site.site_projects.group_by_categories.each do |categ| %>
+  <% if @tag %>
     <%= render partial: 'projects_group', 
-        locals: { title: categ.name, projects: categ.site_projects } %>
+        locals: { title: nil, projects: @site.site_projects.tagged_with(@tag) } %>
+    
+    <div class="see_all">
+      <%= link_to 'Se all', portfolio_projects_path(@site.key), class: 'btn btn-default' %>
+    </div>
+  <% else %>
+    <% @site.site_projects.group_by_categories.each do |categ| %>
+      <%= render partial: 'projects_group', 
+          locals: { title: categ.name, projects: categ.site_projects } %>
+    <% end %>
+    
+    <%= render partial: 'projects_group', 
+        locals: { title: 'Others', projects: @site.site_projects.uncategorized } %>
   <% end %>
-  
-  <%= render partial: 'projects_group', 
-      locals: { title: 'Others', projects: Portfolio::SiteProject.uncategorized } %>
 </div>

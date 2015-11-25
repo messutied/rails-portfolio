@@ -10,6 +10,7 @@ module Portfolio
 
     def index
       @items = resource.where(site: @site)
+      @tag = SiteItemTag.find_by_key(params[:tag_key]) if params[:tag_key]
     end
 
     def show
