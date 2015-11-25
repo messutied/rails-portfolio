@@ -65,7 +65,9 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="form-group">
-        <%= f.label :summary %><br>
+        <%= f.label :summary %>
+        <%= link_to 'Show Preview', '#', class: 'js_markdown_preview' %>
+        <div class="markdown_preview"></div>
         <%= f.text_area :summary, class: 'form-control pf_text_area' %>
       </div>
     </div>

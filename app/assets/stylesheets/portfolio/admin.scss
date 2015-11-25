@@ -2,4 +2,12 @@
   .pf_text_area {
     height: 300px;
   }
+  
+  .markdown_preview {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #F9F9F9;
+    display: none;
+  }
 }

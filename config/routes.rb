@@ -4,6 +4,8 @@ Portfolio::Engine.routes.draw do
   end
   
   namespace :admin do
+    post 'markdown_preview' => 'api#markdown_preview'
+    
     resources :site_item_categories
     resources :site_item_tags
     resources :social_links

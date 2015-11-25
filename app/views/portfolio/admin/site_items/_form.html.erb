@@ -35,6 +35,8 @@
     <div class="col-xs-12 col-md-10">
       <div class="form-group">
         <%= f.label :body %>
+        <%= link_to 'Show Preview', '#', class: 'js_markdown_preview' %>
+        <div class="markdown_preview"></div>
         <%= f.text_area :body, class: 'form-control pf_text_area' %>
       </div>
     </div>
