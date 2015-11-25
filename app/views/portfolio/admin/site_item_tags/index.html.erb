@@ -1,0 +1,32 @@
+<h1>Listing Admin Site Item Tags</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.name %></td>
+        <td><%= tag.key %></td>
+        <td>
+          <%= link_to 'Edit', [:edit, :admin, tag] %>
+        </td>
+        <td>
+          <%= link_to 'Destroy', [:admin, tag],
+                      method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Site item tag',
+    new_admin_site_item_tag_path, class: 'btn btn-primary' %>
