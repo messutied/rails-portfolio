@@ -2,7 +2,7 @@
   <%= render 'portfolio/shared/form_errors', record: @item %>
 
   <div class="row">
-    <div class="col-xs-5">
+    <div class="col-xs-4">
       <div class="form-group">
         <%= f.label :title %>
         <%= f.text_field :title, class: 'form-control' %>
@@ -22,6 +22,16 @@
         <%= f.select :site_item_category_id, 
             Portfolio::SiteItemCategory.all.map { |c| [c.name, c.id] },
             {}, class: 'form-control'%>
+      </div>
+    </div>
+    
+    <div class="col-xs-1">
+      <div class="checkbox">
+        <label>
+          <br>
+          <%= f.check_box :featured %>
+          Featured
+        </label>
       </div>
     </div>
   </div>

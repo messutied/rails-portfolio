@@ -3,6 +3,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Featured</th>
       <th>Category</th>
       <th>Name</th>
       <th>Url</th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><%= item.featured ? 'Yes' : 'No' %></td>
         <td><%= item.site_item_category.name %></td>
         <td><%= item.title %></td>
         <td><%= item.url %></td>

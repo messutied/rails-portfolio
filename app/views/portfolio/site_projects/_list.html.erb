@@ -1,7 +1,7 @@
 <div class="container portfolio_projects">
   <h2>Projects</h2>
   
-  <% site.site_projects.each do |project| %>
+  <% site.site_projects.featured.each do |project| %>
     <div class="col-md-4 col-xs-6">
       <div class="project_container">
         <%= link_to image_tag(project.default_image.image(:thumb)), item_path(project) %>
@@ -9,4 +9,9 @@
       </div>
     </div>
   <% end %>
+  
+  <div class="clearfix"></div>
+  <%= link_to 'See full portfolio', portfolio_projects_path(@site.key) %>
 </div>
+
+<hr>

@@ -13,12 +13,11 @@
 <hr>
 
 <div class="container portfolio_projects">
-  <% @site.site_projects.each do |project| %>
-    <div class="col-md-4 col-xs-6">
-      <div class="project_container">
-        <%= link_to image_tag(project.default_image.image(:thumb)), item_path(project) %>
-        <%= link_to project.title, item_path(project), class: 'project_name' %>
-      </div>
-    </div>
+  <% @site.site_projects.group_by_categories.each do |categ| %>
+    <%= render partial: 'projects_group', 
+        locals: { title: categ.name, projects: categ.site_projects } %>
   <% end %>
+  
+  <%= render partial: 'projects_group', 
+      locals: { title: 'Others', projects: Portfolio::SiteProject.uncategorized } %>
 </div>

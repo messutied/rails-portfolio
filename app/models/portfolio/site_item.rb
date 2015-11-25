@@ -11,6 +11,12 @@ module Portfolio
       type = SiteItemType.find_by name: type_name.pluralize
       type ? where(site_item_type: type) : self.none
     }
+    scope :uncategorized, -> { where site_item_category_id: nil }
+    scope :featured, -> { where featured: true }
+    
+    def self.group_by_categories
+      SiteItemCategory.where(id: self.select(:site_item_category_id))
+    end
 
     def self.subclasses
       [SiteProject]
