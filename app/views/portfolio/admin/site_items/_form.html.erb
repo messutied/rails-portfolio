@@ -30,10 +30,24 @@
       <%= link_to 'Edit categories', admin_site_item_categories_path, target: 'categories', class: 'btn btn-link' %>
     </div>
   </div>
-
-  <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control pf_text_area' %>
+  
+  <div class="row">
+    <div class="col-xs-12 col-md-10">
+      <div class="form-group">
+        <%= f.label :body %>
+        <%= f.text_area :body, class: 'form-control pf_text_area' %>
+      </div>
+    </div>
+    
+    <div class="col-xs-12 col-md-2">
+      <div class="form-group">
+        <label>Tags</label>
+        <%= f.collection_check_boxes(:site_item_tag_ids, Portfolio::SiteItemTag.all, :id, :name) do |b| %>
+          <div class="checkbox"><%= b.label { b.check_box + b.text } %></div>
+        <% end %>
+        <%= link_to 'Edit tags', admin_site_item_tags_path, target: 'tags', class: 'btn btn-link' %>
+      </div>
+    </div>
   </div>
   
   <div class="form-group">
@@ -53,5 +67,7 @@
     <%= link_to 'Back', [:admin, @site, @resource_name_p], class: 'btn btn-default' %>
   </div>
 <% end %>
+<br>
+<br>
 
 <%= render 'images' unless @item.new_record? %>

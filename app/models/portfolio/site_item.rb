@@ -4,6 +4,7 @@ module Portfolio
     belongs_to :site_item_type
     belongs_to :site_item_category
     has_many :site_item_images, dependent: :delete_all
+    has_and_belongs_to_many :site_item_tags
 
     before_create :set_type
 
