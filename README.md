@@ -41,6 +41,7 @@ root 'portfolio/sites#default'
 ```
 
 ### 3) Define your authorization method
+TODO: authorization is actually authentication
 If you don't have an authorization method already in place, you don't have to do anything and we'll setup an admin_user table and login interface for you (through [devise](https://github.com/plataformatec/devise)), if you'd like to use your own auth method you'll have to uncomment the following lines in `config/initializers/portfolio.rb`:
 
 ```ruby
@@ -57,6 +58,8 @@ end
 2. Run `rake db:migrate` to execute them.
 
 ### 6) Create an admin user
+If you are using our authentication method you'll need to create an admin user
+in order to access your new admin panel, do so by running:
 
 `rake portfolio:create_admin_user[your@admin_email.com,your_secure_password]`
 
