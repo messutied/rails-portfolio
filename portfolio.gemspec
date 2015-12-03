@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = Portfolio::VERSION
   s.authors     = ["Eduardo Messuti"]
   s.email       = ["messuti.edd@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Portfolio."
-  s.description = "TODO: Description of Portfolio."
+  s.homepage    = "http://edd.bz"
+  s.summary     = "Portfolio site builder."
+  s.description = "This gem allows you to easily create a Portfolio web site."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
