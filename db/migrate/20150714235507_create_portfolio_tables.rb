@@ -12,47 +12,13 @@ class CreatePortfolioTables < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-
-    create_table :portfolio_site_social_links do |t|
-      t.references :site, index: true, foreign_key: true
-      t.references :social_link, index: true, foreign_key: true
-      t.string :user_name
-
-      t.timestamps null: false
-    end
-
-    create_table :portfolio_site_menu_links do |t|
-      t.references :site, index: true, foreign_key: true
-      t.string :name
-      t.string :url
-
-      t.timestamps null: false
-    end
-
+    
     create_table :portfolio_site_item_types do |t|
       t.string :name, null: false, index: true
 
       t.timestamps null: false
     end
-
-    create_table :portfolio_site_items do |t|
-      t.references :site, null: false, index: true, foreign_key: true
-      t.belongs_to :site_item_type, null: false, index: true, foreign_key: true
-      t.string :title
-      t.text :body
-      t.string :url
-
-      t.timestamps null: false
-    end
-
-    create_table :portfolio_site_item_images do |t|
-      t.references :site_item, index: true, foreign_key: true
-      t.attachment :image
-      t.boolean :default, default: false
-
-      t.timestamps null: false
-    end
-
+    
     create_table :portfolio_social_links do |t|
       t.string :name
       t.string :url_pattern
@@ -60,6 +26,46 @@ class CreatePortfolioTables < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    create_table :portfolio_site_social_links do |t|
+      t.references :site, index: true
+      t.references :social_link, index: true
+      t.string :user_name
+
+      t.timestamps null: false
+    end
+    add_foreign_key :portfolio_site_social_links, :portfolio_sites, column: :site_id
+    add_foreign_key :portfolio_site_social_links, :portfolio_social_links, column: :social_link_id
+
+    create_table :portfolio_site_menu_links do |t|
+      t.references :site, index: true
+      t.string :name
+      t.string :url
+
+      t.timestamps null: false
+    end
+    add_foreign_key :portfolio_site_menu_links, :portfolio_sites, column: :site_id
+
+    create_table :portfolio_site_items do |t|
+      t.references :site, null: false, index: true
+      t.references :site_item_type, null: false, index: true
+      t.string :title
+      t.text :body
+      t.string :url
+
+      t.timestamps null: false
+    end
+    add_foreign_key :portfolio_site_items, :portfolio_sites, column: :site_id
+    add_foreign_key :portfolio_site_items, :portfolio_site_item_types, column: :site_item_type_id
+
+    create_table :portfolio_site_item_images do |t|
+      t.references :site_item, index: true
+      t.attachment :image
+      t.boolean :default, default: false
+
+      t.timestamps null: false
+    end
+    add_foreign_key :portfolio_site_item_images, :portfolio_site_items, column: :site_item_id
 
     # creating default social links
     Portfolio::SocialLink::DEFAULT_LINKS.each do |link|
