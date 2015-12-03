@@ -37,7 +37,7 @@ And insert code into:
 Make sure you have a root path defined. If you'd like to point the root path at your portfolio, uncomment the line:
 
 ```ruby
-root 'portfolio/items#default'
+root 'portfolio/sites#default'
 ```
 
 ### 3) Define your authorization method
