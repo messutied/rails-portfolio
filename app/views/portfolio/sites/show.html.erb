@@ -12,7 +12,7 @@
     <%= raw render_markdown @site.summary %>
   </div>
 
-  <%= render 'portfolio/site_projects/list', site: @site if @site.site_items.any? %>
+  <%= render 'portfolio/site_projects/list', projects: @featured_projects if @featured_projects.any? %>
 
   <div class="pf_contact">
     <%= link_to 'Email me', "mailto:#{@site.email}", target: :_blank, class: 'btn btn-default' %>

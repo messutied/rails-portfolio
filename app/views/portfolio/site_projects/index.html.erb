@@ -17,13 +17,13 @@
 <div class="container portfolio_projects">
   <% if @tag %>
     <%= render partial: 'projects_group', 
-        locals: { title: nil, projects: @site.site_projects.tagged_with(@tag) } %>
+        locals: { title: nil, projects: @site.site_projects.published.tagged_with(@tag) } %>
     
     <div class="see_all">
       <%= link_to 'Se all', portfolio_projects_path(@site.key), class: 'btn btn-default' %>
     </div>
   <% else %>
-    <% @site.site_projects.group_by_categories.each do |categ| %>
+    <% @site.site_projects.published.group_by_categories.each do |categ| %>
       <%= render partial: 'projects_group', 
           locals: { title: categ.name, projects: categ.site_projects } %>
     <% end %>

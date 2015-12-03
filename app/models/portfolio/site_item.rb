@@ -14,6 +14,7 @@ module Portfolio
     }
     scope :uncategorized, -> { where site_item_category_id: nil }
     scope :featured, -> { where featured: true }
+    scope :published, -> { where public: true }
     scope :tagged_with, ->(tag) { 
       joins(:site_item_tags).where('portfolio_site_item_tags.id = ?', tag.id) }
     
