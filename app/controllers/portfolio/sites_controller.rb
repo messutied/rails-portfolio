@@ -17,7 +17,7 @@ module Portfolio
 
     private
       def set_projects
-        @featured_projects = @site.site_projects.published.featured
+        @featured_projects = @site.site_projects.published.featured if @site
       end
 
       def item_params
