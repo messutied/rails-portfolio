@@ -21,7 +21,7 @@
         <%= f.label :site_item_category_id %>
         <%= f.select :site_item_category_id, 
             Portfolio::SiteItemCategory.all.map { |c| [c.name, c.id] },
-            {}, class: 'form-control'%>
+            { include_blank: true }, class: 'form-control'%>
       </div>
     </div>
     
