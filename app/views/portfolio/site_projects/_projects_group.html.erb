@@ -5,7 +5,7 @@
     <% projects.each do |project| %>
       <div class="col-md-4 col-xs-6">
         <div class="project_container">
-          <%= link_to site_item_image(project, :thumb), item_path(project) %>
+          <%= link_to site_item_image(project, :medium), item_path(project) %>
           <%= link_to project.title, item_path(project), class: 'project_name' %>
         </div>
       </div>
