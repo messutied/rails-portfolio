@@ -29,6 +29,9 @@
     <% end %>
     
     <%= render partial: 'projects_group', 
-        locals: { title: 'Others', projects: @site.site_projects.published.uncategorized } %>
+        locals: {
+          title: @site.site_projects.published.categorized.count > 0 ? 'Others' : '',
+          projects: @site.site_projects.published.uncategorized 
+        } %>
   <% end %>
 </div>

@@ -15,6 +15,7 @@ module Portfolio
       type ? where(site_item_type: type) : self.none
     }
     scope :uncategorized, -> { where site_item_category_id: nil }
+    scope :categorized, -> { where.not(site_item_category_id: nil) }
     scope :featured, -> { where featured: true }
     scope :published, -> { where public: true }
     scope :tagged_with, ->(tag) { 
