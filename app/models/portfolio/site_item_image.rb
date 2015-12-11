@@ -2,7 +2,7 @@ module Portfolio
   class SiteItemImage < ActiveRecord::Base
     has_attached_file :image,
       styles: { 
-        large: '700x700>', 
+        large: '900x2000>', 
         medium: '300x300#', 
         thumb: '150x150#'  
       }
