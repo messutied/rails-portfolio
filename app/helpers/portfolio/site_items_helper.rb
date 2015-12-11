@@ -9,7 +9,7 @@ module Portfolio
     end
     
     def ajax_checkbox item, field
-      check_box_tag field, item.id, item.featured,
+      check_box_tag field, item.id, item[field],
         class: 'ajax_checkbox',
         data: { path: polymorphic_path([:admin, @site, item]), field: field }
     end
