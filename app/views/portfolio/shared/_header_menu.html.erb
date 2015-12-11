@@ -3,7 +3,7 @@
   <%= link_to 'Home', show_portfolio_path(@site.key), class: 'active' %>
   
   <% Portfolio::SiteItem.subclasses.each do |klass| %>
-    <% if klass.where(site: @site).count > 0 %>
+    <% if klass.where(site: @site).published.count > 0 %>
       <% name = klass.type_name.pluralize %>
       <%= link_to klass.display_name || name.humanize, send("portfolio_#{name}_path", @site.key) %>
     <% end %>
