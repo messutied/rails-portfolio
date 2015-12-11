@@ -17,8 +17,8 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.public ? 'Yes' : 'No' %></td>
-        <td><%= item.featured ? 'Yes' : 'No' %></td>
+        <td><%= ajax_checkbox item, :public %></td>
+        <td><%= ajax_checkbox item, :featured %></td>
         <td><%= item.site_item_category ? item.site_item_category.name : '-' %></td>
         <td><%= item.title %></td>
         <td><%= item.url %></td>

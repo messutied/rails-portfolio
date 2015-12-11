@@ -29,10 +29,24 @@ module Portfolio
       end
 
       def update
-        if @item.update(item_project_params)
-          redirect_to [:edit, :admin, @site, @item], notice: 'Item project was successfully updated.'
-        else
-          render :edit
+        resp = @item.update(item_project_params)
+        
+        respond_to do |format|
+          format.html {
+            if resp
+              redirect_to [:edit, :admin, @site, @item], notice: 'Item project was successfully updated.'
+            else
+              render :edit
+            end
+          }
+          
+          format.json {
+            if resp
+              render json: @item
+            else
+              render json: { error: @item.errors.full_messages }, status: 400
+            end
+          }
         end
       end
 

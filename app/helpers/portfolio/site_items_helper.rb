@@ -7,5 +7,11 @@ module Portfolio
         image_tag("portfolio/#{style}/missing.png")
       end
     end
+    
+    def ajax_checkbox item, field
+      check_box_tag field, item.id, item.featured,
+        class: 'ajax_checkbox',
+        data: { path: polymorphic_path([:admin, @site, item]), field: field }
+    end
   end
 end
