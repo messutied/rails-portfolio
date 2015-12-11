@@ -44,7 +44,7 @@ module Portfolio
             if resp
               render json: @item
             else
-              render json: { error: @item.errors.full_messages }, status: 400
+              render json: { errors: @item.errors.full_messages }, status: 400
             end
           }
         end

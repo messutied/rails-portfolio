@@ -12,7 +12,10 @@ $(function() {
       type: 'patch',
       dataType: 'json',
       url: url,
-      data: data
+      data: data,
+      error: function() {
+        alert('Error updating the record');
+      }
     });
   });
 });
