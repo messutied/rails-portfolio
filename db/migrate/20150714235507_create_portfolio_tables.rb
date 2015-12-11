@@ -66,6 +66,8 @@ class CreatePortfolioTables < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_foreign_key :portfolio_site_item_images, :portfolio_site_items, column: :site_item_id
+    
+    # TODO: seems like this records below are not been created
 
     # creating default social links
     Portfolio::SocialLink::DEFAULT_LINKS.each do |link|

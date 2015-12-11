@@ -5,6 +5,8 @@ module Portfolio
     belongs_to :site_item_category
     has_many :site_item_images, dependent: :delete_all
     has_and_belongs_to_many :site_item_tags
+    
+    validates :title, presence: true
 
     before_create :set_type
 
