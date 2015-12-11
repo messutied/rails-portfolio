@@ -22,7 +22,7 @@ module Portfolio
         @item = resource.new(item_project_params)
 
         if @item.save
-          redirect_to [:admin, @site, @resource_name_p], notice: 'Item project was successfully created.'
+          redirect_to [:edit, :admin, @site, @item], notice: 'Item project was successfully created.'
         else
           render :new
         end
@@ -30,7 +30,7 @@ module Portfolio
 
       def update
         if @item.update(item_project_params)
-          redirect_to [:admin, @site, @resource_name_p], notice: 'Item project was successfully updated.'
+          redirect_to [:edit, :admin, @site, @item], notice: 'Item project was successfully updated.'
         else
           render :edit
         end
