@@ -3,6 +3,7 @@ require 'devise'
 require 'redcarpet'
 require 'bootstrap-sass'
 require 'bootstrap-sass-extras'
+require 'jquery-rails'
 
 
 module Portfolio
