@@ -1,0 +1,286 @@
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreatePortfolioTables (20150714235507)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "portfolio_sites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "person_name" varchar NOT NULL, "job_title" varchar NOT NULL, "greetings" varchar, "summary" text, "email" varchar, "default" boolean DEFAULT 'f', "avatar_file_name" varchar, "avatar_content_type" varchar, "avatar_file_size" integer, "avatar_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_portfolio_sites_on_key" ON "portfolio_sites" ("key")[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "portfolio_site_item_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_portfolio_site_item_types_on_name" ON "portfolio_site_item_types" ("name")[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "portfolio_social_links" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "url_pattern" varchar, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "portfolio_site_social_links" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "social_link_id" integer, "user_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_portfolio_site_social_links_on_site_id" ON "portfolio_site_social_links" ("site_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_social_links_on_site_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_social_links_on_site_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_portfolio_site_social_links_on_social_link_id" ON "portfolio_site_social_links" ("social_link_id")
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "portfolio_site_menu_links" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "name" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_portfolio_site_menu_links_on_site_id" ON "portfolio_site_menu_links" ("site_id")
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "portfolio_site_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer NOT NULL, "site_item_type_id" integer NOT NULL, "title" varchar, "body" text, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_portfolio_site_items_on_site_id" ON "portfolio_site_items" ("site_id")
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_items_on_site_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_items_on_site_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_portfolio_site_items_on_site_item_type_id" ON "portfolio_site_items" ("site_item_type_id")
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "portfolio_site_item_images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_item_id" integer, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "default" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_portfolio_site_item_images_on_site_item_id" ON "portfolio_site_item_images" ("site_item_id")
+Command :: file -b --mime '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/bf215181b5140522137b3d4f6b73544a20160126-41765-1guvv97.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/bf215181b5140522137b3d4f6b73544a20160126-41765-vndx0.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/bf215181b5140522137b3d4f6b73544a20160126-41765-vndx0.png[0]'
+Command :: convert '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/bf215181b5140522137b3d4f6b73544a20160126-41765-vndx0.png[0]' -auto-orient -resize "32x32>" '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/fca6afd4c72a498ff9d9cb53b777333220160126-41765-1v3jm6u'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/bf215181b5140522137b3d4f6b73544a20160126-41765-vndx0.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/bf215181b5140522137b3d4f6b73544a20160126-41765-vndx0.png[0]'
+Command :: convert '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/bf215181b5140522137b3d4f6b73544a20160126-41765-vndx0.png[0]' -auto-orient -resize "64x64>" '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/fca6afd4c72a498ff9d9cb53b777333220160126-41765-87fyqh'
+Command :: file -b --mime '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/bf215181b5140522137b3d4f6b73544a20160126-41765-gryuuk.png'
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "portfolio_social_links" ("name", "url_pattern", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Github"], ["url_pattern", "http://github.com/[user_name]"], ["image_file_name", "github.png"], ["image_content_type", "image/png"], ["image_file_size", 1609], ["image_updated_at", "2016-01-26 15:02:55.746787"], ["created_at", "2016-01-26 15:02:55.851639"], ["updated_at", "2016-01-26 15:02:55.851639"]]
+Command :: file -b --mime '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/b73c2d22763d1ce2143a3755c1d0ad3a20160126-41765-1ni2vct.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/b73c2d22763d1ce2143a3755c1d0ad3a20160126-41765-1c543yp.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/b73c2d22763d1ce2143a3755c1d0ad3a20160126-41765-1c543yp.png[0]'
+Command :: convert '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/b73c2d22763d1ce2143a3755c1d0ad3a20160126-41765-1c543yp.png[0]' -auto-orient -resize "32x32>" '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/72a74b6f0b32c192a459f87af996f7cc20160126-41765-bdnv05'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/b73c2d22763d1ce2143a3755c1d0ad3a20160126-41765-1c543yp.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/b73c2d22763d1ce2143a3755c1d0ad3a20160126-41765-1c543yp.png[0]'
+Command :: convert '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/b73c2d22763d1ce2143a3755c1d0ad3a20160126-41765-1c543yp.png[0]' -auto-orient -resize "64x64>" '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/72a74b6f0b32c192a459f87af996f7cc20160126-41765-hrnhen'
+Command :: file -b --mime '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/b73c2d22763d1ce2143a3755c1d0ad3a20160126-41765-tm6j4z.png'
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "portfolio_social_links" ("name", "url_pattern", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["name", "Twitter"], ["url_pattern", "http://twitter.com/[user_name]"], ["image_file_name", "twitter.png"], ["image_content_type", "image/png"], ["image_file_size", 1085], ["image_updated_at", "2016-01-26 15:02:55.866148"], ["created_at", "2016-01-26 15:02:55.978475"], ["updated_at", "2016-01-26 15:02:55.978475"]]
+Command :: file -b --mime '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/f1576406b382b7d1c8c2607f7c563d4f20160126-41765-1mdq6uq.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/f1576406b382b7d1c8c2607f7c563d4f20160126-41765-5pj0bq.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/f1576406b382b7d1c8c2607f7c563d4f20160126-41765-5pj0bq.png[0]'
+Command :: convert '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/f1576406b382b7d1c8c2607f7c563d4f20160126-41765-5pj0bq.png[0]' -auto-orient -resize "32x32>" '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/a9663ccbf4849231fe269b9f99b8e8af20160126-41765-1sqocal'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/f1576406b382b7d1c8c2607f7c563d4f20160126-41765-5pj0bq.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/f1576406b382b7d1c8c2607f7c563d4f20160126-41765-5pj0bq.png[0]'
+Command :: convert '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/f1576406b382b7d1c8c2607f7c563d4f20160126-41765-5pj0bq.png[0]' -auto-orient -resize "64x64>" '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/a9663ccbf4849231fe269b9f99b8e8af20160126-41765-1rsajmz'
+Command :: file -b --mime '/var/folders/c0/cg02vc3x0k506hx79h_yz73m0000gn/T/f1576406b382b7d1c8c2607f7c563d4f20160126-41765-3bjoom.png'
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "portfolio_social_links" ("name", "url_pattern", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Linkedin"], ["url_pattern", "http://www.linkedin.com/in/[user_name]"], ["image_file_name", "linkedin.png"], ["image_content_type", "image/png"], ["image_file_size", 959], ["image_updated_at", "2016-01-26 15:02:55.990548"], ["created_at", "2016-01-26 15:02:56.098425"], ["updated_at", "2016-01-26 15:02:56.098425"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "portfolio_site_item_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "projects"], ["created_at", "2016-01-26 15:02:56.121558"], ["updated_at", "2016-01-26 15:02:56.121558"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150714235507"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to DeviseCreatePortfolioAdminUsers (20150916001106)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "portfolio_admin_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_portfolio_admin_users_on_email" ON "portfolio_admin_users" ("email")[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_admin_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_portfolio_admin_users_on_reset_password_token" ON "portfolio_admin_users" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150916001106"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePortfolioAdminSiteItemCategories (20151124202355)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "portfolio_site_item_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151124202355"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddSiteItemCategoryIdToSiteItem (20151124210602)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "portfolio_site_items" ADD "site_item_category_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151124210602"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to AddFeaturedToSiteItem (20151125132700)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "portfolio_site_items" ADD "featured" boolean DEFAULT 'f'[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151125132700"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePortfolioSiteItemTags (20151125141154)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "portfolio_site_item_tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151125141154"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePortfolioSiteItemTagsItems (20151125151535)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "portfolio_site_item_tags_items" ("site_item_id" integer, "site_item_tag_id" integer) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_portfolio_site_item_tags_items_on_site_item_id" ON "portfolio_site_item_tags_items" ("site_item_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_item_tags_items_on_site_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_item_tags_items_on_site_item_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_portfolio_site_item_tags_items_on_site_item_tag_id" ON "portfolio_site_item_tags_items" ("site_item_tag_id")
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151125151535"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to AddPublicToPortfolioSiteItem (20151203105347)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "portfolio_site_items" ADD "public" boolean DEFAULT 'f'
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151203105347"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_admin_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_admin_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_admin_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_item_images_on_site_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_item_images_on_site_item_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_item_tags_items_on_site_item_tag_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_item_tags_items_on_site_item_tag_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_item_tags_items_on_site_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_item_tags_items_on_site_item_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_item_types_on_name' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_item_types_on_name' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_items_on_site_item_type_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_items_on_site_item_type_id' AND type='index'
+
+  [1m[36m (0.4ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_items_on_site_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_items_on_site_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_menu_links_on_site_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_menu_links_on_site_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_social_links_on_social_link_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_social_links_on_social_link_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_social_links_on_site_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_social_links_on_site_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_sites_on_key' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_sites_on_key' AND type='index'
+[0m
+  [1m[36m (2.1ms)[0m  [1mCREATE TABLE "portfolio_admin_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_portfolio_admin_users_on_email" ON "portfolio_admin_users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_admin_users_on_email' AND type='index'
+
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_portfolio_admin_users_on_reset_password_token" ON "portfolio_admin_users" ("reset_password_token")[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "portfolio_site_item_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "portfolio_site_item_images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_item_id" integer, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "default" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.5ms)[0m  CREATE  INDEX "index_portfolio_site_item_images_on_site_item_id" ON "portfolio_site_item_images" ("site_item_id")
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "portfolio_site_item_tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "portfolio_site_item_tags_items" ("site_item_id" integer, "site_item_tag_id" integer) 
+  [1m[36m (0.5ms)[0m  [1mCREATE  INDEX "index_portfolio_site_item_tags_items_on_site_item_id" ON "portfolio_site_item_tags_items" ("site_item_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_item_tags_items_on_site_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_item_tags_items_on_site_item_id' AND type='index'
+
+  [1m[36m (0.8ms)[0m  [1mCREATE  INDEX "index_portfolio_site_item_tags_items_on_site_item_tag_id" ON "portfolio_site_item_tags_items" ("site_item_tag_id")[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "portfolio_site_item_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.6ms)[0m  [1mCREATE  INDEX "index_portfolio_site_item_types_on_name" ON "portfolio_site_item_types" ("name")[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "portfolio_site_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer NOT NULL, "site_item_type_id" integer NOT NULL, "title" varchar, "body" text, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "site_item_category_id" integer, "featured" boolean DEFAULT 'f', "public" boolean DEFAULT 'f') 
+  [1m[36m (0.6ms)[0m  [1mCREATE  INDEX "index_portfolio_site_items_on_site_id" ON "portfolio_site_items" ("site_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_items_on_site_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_items_on_site_id' AND type='index'
+
+  [1m[36m (0.5ms)[0m  [1mCREATE  INDEX "index_portfolio_site_items_on_site_item_type_id" ON "portfolio_site_items" ("site_item_type_id")[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "portfolio_site_menu_links" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "name" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.6ms)[0m  [1mCREATE  INDEX "index_portfolio_site_menu_links_on_site_id" ON "portfolio_site_menu_links" ("site_id")[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "portfolio_site_social_links" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "site_id" integer, "social_link_id" integer, "user_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.6ms)[0m  [1mCREATE  INDEX "index_portfolio_site_social_links_on_site_id" ON "portfolio_site_social_links" ("site_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_portfolio_site_social_links_on_site_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_portfolio_site_social_links_on_site_id' AND type='index'
+
+  [1m[36m (0.6ms)[0m  [1mCREATE  INDEX "index_portfolio_site_social_links_on_social_link_id" ON "portfolio_site_social_links" ("social_link_id")[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "portfolio_sites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "person_name" varchar NOT NULL, "job_title" varchar NOT NULL, "greetings" varchar, "summary" text, "email" varchar, "default" boolean DEFAULT 'f', "avatar_file_name" varchar, "avatar_content_type" varchar, "avatar_file_size" integer, "avatar_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.6ms)[0m  [1mCREATE  INDEX "index_portfolio_sites_on_key" ON "portfolio_sites" ("key")[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "portfolio_social_links" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "url_pattern" varchar, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151203105347')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150714235507')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150916001106')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151124202355')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151124210602')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151125132700')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151125141154')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151125151535')[0m

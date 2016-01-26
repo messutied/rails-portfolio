@@ -12,6 +12,11 @@ module Portfolio
     config.to_prepare do
       require_relative './custom_failure'
     end
+
+    config.generators do |g|
+      g.test_framework :rspec
+      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
+    end
   end
 
   class << self
