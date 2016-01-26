@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203105347) do
+ActiveRecord::Schema.define(version: 20160126162607) do
 
   create_table "portfolio_admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20151203105347) do
 
   create_table "portfolio_site_items", force: :cascade do |t|
     t.integer  "site_id",                               null: false
-    t.integer  "site_item_type_id",                     null: false
     t.string   "title"
     t.text     "body"
     t.string   "url"
@@ -85,10 +84,10 @@ ActiveRecord::Schema.define(version: 20151203105347) do
     t.integer  "site_item_category_id"
     t.boolean  "featured",              default: false
     t.boolean  "public",                default: false
+    t.string   "type"
   end
 
   add_index "portfolio_site_items", ["site_id"], name: "index_portfolio_site_items_on_site_id"
-  add_index "portfolio_site_items", ["site_item_type_id"], name: "index_portfolio_site_items_on_site_item_type_id"
 
   create_table "portfolio_site_menu_links", force: :cascade do |t|
     t.integer  "site_id"

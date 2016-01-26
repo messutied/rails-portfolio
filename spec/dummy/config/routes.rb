@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-
-  mount Portfolio::Engine => "/portfolio"
+  mount Portfolio::Engine => "/"
+  root 'portfolio/sites#default'
 end

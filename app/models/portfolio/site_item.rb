@@ -8,12 +8,6 @@ module Portfolio
 
     validates :title, :site, presence: true
 
-    before_create :set_type
-
-    scope :of_type, ->(type_name) {
-      type = SiteItemType.find_by name: type_name.pluralize
-      type ? where(site_item_type: type) : self.none
-    }
     scope :uncategorized, -> { where site_item_category_id: nil }
     scope :categorized, -> { where.not(site_item_category_id: nil) }
     scope :featured, -> { where featured: true }
@@ -60,15 +54,9 @@ module Portfolio
       self.name.underscore.split('/').last.split('_').last
     end
 
-    def self.type
-      puts self.type_name.pluralize
-      SiteItemType.find_by name: self.type_name.pluralize
-    end
-
-    def set_type
-      type = self.class.type
-      return if type.nil?
-      self.site_item_type = type
-    end
+    # def self.type
+    #   puts self.type_name.pluralize
+    #   SiteItemType.find_by name: self.type_name.pluralize
+    # end
   end
 end
