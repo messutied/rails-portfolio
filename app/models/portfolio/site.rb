@@ -3,7 +3,7 @@ module Portfolio
     has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "150x150>" }
     validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-    validates :person_name, presence: true
+    validates :person_name, :job_title, presence: true
 
     has_many :site_social_links, dependent: :delete_all
     has_many :site_menu_links, dependent: :delete_all

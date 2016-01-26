@@ -5,8 +5,8 @@ module Portfolio
     belongs_to :site_item_category
     has_many :site_item_images, dependent: :delete_all
     has_and_belongs_to_many :site_item_tags
-    
-    validates :title, presence: true
+
+    validates :title, :site, presence: true
 
     before_create :set_type
 
@@ -18,9 +18,9 @@ module Portfolio
     scope :categorized, -> { where.not(site_item_category_id: nil) }
     scope :featured, -> { where featured: true }
     scope :published, -> { where public: true }
-    scope :tagged_with, ->(tag) { 
+    scope :tagged_with, ->(tag) {
       joins(:site_item_tags).where('portfolio_site_item_tags.id = ?', tag.id) }
-    
+
     def self.group_by_categories
       SiteItemCategory.where(id: self.select(:site_item_category_id))
     end
