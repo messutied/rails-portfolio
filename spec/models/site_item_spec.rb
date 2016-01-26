@@ -24,6 +24,14 @@ module Portfolio
         expect(SiteItemChild.count).to be 1
         expect(SiteItemChild.first.type).to eq('Portfolio::SiteItemChild')
       end
+
+      it 'should return its resource name for usage in paths construction' do
+        expect(SiteItemChild.resource_name).to eq 'site_item_child'
+      end
+
+      it 'should return its human name for usage in views' do
+        expect(SiteItemChild.human_name).to eq 'child'
+      end
     end
   end
 end

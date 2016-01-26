@@ -27,9 +27,9 @@ module Portfolio
       end
 
       def set_resource_name
-        @resource_name = resource.name.underscore.split('/').last
+        @resource_name = resource.resource_name
         @resource_name_p = @resource_name.pluralize
-        @resource_name_h = @resource_name.split('_').last
+        @resource_name_h = resource.human_name
       end
 
       def resource

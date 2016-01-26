@@ -50,13 +50,8 @@ module Portfolio
       self.name.underscore.split('/').last
     end
 
-    def self.type_name
-      self.name.underscore.split('/').last.split('_').last
+    def self.human_name
+      self.resource_name.split('_').last
     end
-
-    # def self.type
-    #   puts self.type_name.pluralize
-    #   SiteItemType.find_by name: self.type_name.pluralize
-    # end
   end
 end

@@ -25,7 +25,7 @@ Portfolio::Engine.routes.draw do
   end
 
   Portfolio::SiteItem.subclasses.each do |klass|
-    resource_name = klass.type_name
+    resource_name = klass.human_name
     res = resource_name.pluralize
     dname = (klass.display_name || res).downcase
     get "/:portfolio_key/#{dname}/:id-:title" => "site_#{res}#show", as: "show_portfolio_#{resource_name}"

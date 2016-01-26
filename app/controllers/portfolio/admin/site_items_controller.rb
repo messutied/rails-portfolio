@@ -30,7 +30,7 @@ module Portfolio
 
       def update
         resp = @item.update(item_project_params)
-        
+
         respond_to do |format|
           format.html {
             if resp
@@ -39,7 +39,7 @@ module Portfolio
               render :edit
             end
           }
-          
+
           format.json {
             if resp
               render json: @item
@@ -63,7 +63,7 @@ module Portfolio
 
         def item_project_params
           params.require(@resource_name)
-            .permit(:site_id, :title, :site_item_category_id, :featured, :body, 
+            .permit(:site_id, :title, :site_item_category_id, :featured, :body,
                     :url, :public, site_item_tag_ids: [])
         end
 
@@ -72,9 +72,9 @@ module Portfolio
         end
 
         def set_resource_name
-          @resource_name = resource.name.underscore.split('/').last
+          @resource_name = resource.resource_name
           @resource_name_p = @resource_name.pluralize
-          @resource_name_h = @resource_name.split('_').last
+          @resource_name_h = resource.human_name
         end
 
         def resource
