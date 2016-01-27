@@ -4,7 +4,7 @@ module Portfolio
       # TODO: move this construction to an initializer
       renderer = Redcarpet::Render::HTML.new(hard_wrap: true)
       markdown = Redcarpet::Markdown.new(renderer, autolink: true, tables: true)
-      markdown.render text
+      markdown.render text.to_s
     end
 
     def unless_blank attribute, name
