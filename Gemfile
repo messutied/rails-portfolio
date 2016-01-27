@@ -16,3 +16,4 @@ gemspec
 gem "rspec-rails", '~> 3.0'
 gem "factory_girl_rails"
 gem 'faker'
+gem 'simplecov', :require => false, :group => :test
