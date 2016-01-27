@@ -16,22 +16,22 @@
 
 <div class="container portfolio_projects">
   <% if @tag %>
-    <%= render partial: 'projects_group', 
+    <%= render partial: 'projects_group',
         locals: { title: nil, projects: @site.site_projects.published.tagged_with(@tag) } %>
-    
+
     <div class="see_all">
       <%= link_to 'Se all', portfolio_projects_path(@site.key), class: 'btn btn-default' %>
     </div>
   <% else %>
     <% @site.site_projects.published.group_by_categories.each do |categ| %>
-      <%= render partial: 'projects_group', 
-          locals: { title: categ.name, projects: categ.site_projects } %>
+      <%= render partial: 'projects_group',
+          locals: { title: categ.name, projects: categ.site_projects.published } %>
     <% end %>
-    
-    <%= render partial: 'projects_group', 
+
+    <%= render partial: 'projects_group',
         locals: {
           title: @site.site_projects.published.categorized.count > 0 ? 'Others' : '',
-          projects: @site.site_projects.published.uncategorized 
+          projects: @site.site_projects.published.uncategorized
         } %>
   <% end %>
 </div>

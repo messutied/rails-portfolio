@@ -3,6 +3,32 @@ module Portfolio
     factory :site, class: Portfolio::Site do
       person_name 'some dude'
       job_title 'manager'
+
+      factory :site_with_projects do
+        after :create do |site, evaluator|
+          create_list :site_project, 2, site: site, public: true
+          create_list :site_project, 2, site: site, public: false
+        end
+      end
+
+      factory :site_with_categorized_projects do
+        after :create do |site, evaluator|
+          categ1 = create :site_item_category
+          categ2 = create :site_item_category
+
+          create :site_project_with_category, site: site, public: true,
+                 site_item_category: categ1
+
+          create :site_project_with_category, site: site, public: false,
+                 site_item_category: categ2
+
+          create :site_project_with_category, site: site, public: true,
+                 site_item_category: categ2
+
+          create :site_project_with_category, site: site, public: false,
+                 site_item_category: categ1
+        end
+      end
     end
   end
 end

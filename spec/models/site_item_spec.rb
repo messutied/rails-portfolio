@@ -34,7 +34,7 @@ module Portfolio
       end
 
       it 'returns the list of subclases' do
-        expect(SiteItem.subclasses).to eq [SiteItemChild]
+        expect(SiteItem.subclasses).to eq [SiteProject]
       end
     end
   end

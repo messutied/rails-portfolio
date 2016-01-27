@@ -11,6 +11,7 @@ module Portfolio
     scope :categorized,   -> { where.not(site_item_category_id: nil) }
     scope :featured,      -> { where featured: true }
     scope :published,     -> { where public: true }
+    scope :unpublished,   -> { where public: false }
     scope :tagged_with,   ->(tag) {
       joins(:site_item_tags).where('portfolio_site_item_tags.id = ?', tag.id)
     }
@@ -24,7 +25,8 @@ module Portfolio
     end
 
     def default_image_url style=:medium
-      default_image.image.url(style)
+      image = default_image
+      image ? image.image.url(style) : nil
     end
 
     def self.group_by_categories
