@@ -16,6 +16,14 @@ module Portfolio
       joins(:site_item_tags).where('portfolio_site_item_tags.id = ?', tag.id)
     }
 
+    def path_key
+      "#{path_title}-#{id}"
+    end
+
+    def path_title
+      title.parameterize('-')
+    end
+
     def default_image
       if site_item_images.empty?
         nil

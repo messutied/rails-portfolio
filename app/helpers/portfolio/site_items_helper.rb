@@ -16,7 +16,7 @@ module Portfolio
 
     def item_path item
       portfolio.send "show_portfolio_#{item.class.human_name}_path",
-           item.site.key, item.id, item.title.parameterize('_')
+           item.site.key, item.path_title, item.id
     end
   end
 end

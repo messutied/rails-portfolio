@@ -29,7 +29,7 @@ Portfolio::Engine.routes.draw do
     resource_plural_name = resource_name.pluralize
     resource_display_name = (klass.display_name || resource_plural_name).downcase
 
-    get "/:portfolio_key/#{resource_display_name}/:id-:title" =>
+    get "/:portfolio_key/#{resource_display_name}/:title-:id" =>
         "site_#{resource_plural_name}#show",
         as: "show_portfolio_#{resource_name}"
 
