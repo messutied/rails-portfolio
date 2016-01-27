@@ -17,9 +17,11 @@ module Portfolio
         after :create do |site, evaluator|
           categ1 = create :site_item_category
           categ2 = create :site_item_category
+          tag = create :site_item_tag
 
           create :site_project_with_category, site: site,
-                 public: true, site_item_category: categ1, featured: true
+                 public: true, site_item_category: categ1,
+                 featured: true, site_item_tags: [tag]
 
           create :site_project_with_category, site: site,
                  public: false, site_item_category: categ2
