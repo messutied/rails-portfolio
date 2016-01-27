@@ -66,14 +66,6 @@ ActiveRecord::Schema.define(version: 20160126162607) do
   add_index "portfolio_site_item_tags_items", ["site_item_id"], name: "index_portfolio_site_item_tags_items_on_site_item_id"
   add_index "portfolio_site_item_tags_items", ["site_item_tag_id"], name: "index_portfolio_site_item_tags_items_on_site_item_tag_id"
 
-  create_table "portfolio_site_item_types", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "portfolio_site_item_types", ["name"], name: "index_portfolio_site_item_types_on_name"
-
   create_table "portfolio_site_items", force: :cascade do |t|
     t.integer  "site_id",                               null: false
     t.string   "title"

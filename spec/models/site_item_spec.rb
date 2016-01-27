@@ -32,6 +32,10 @@ module Portfolio
       it 'should return its human name for usage in views' do
         expect(SiteItemChild.human_name).to eq 'child'
       end
+
+      it 'returns the list of subclases' do
+        expect(SiteItem.subclasses).to eq [SiteItemChild]
+      end
     end
   end
 end

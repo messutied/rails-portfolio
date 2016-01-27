@@ -13,12 +13,6 @@ class CreatePortfolioTables < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_table :portfolio_site_item_types do |t|
-      t.string :name, null: false, index: true
-
-      t.timestamps null: false
-    end
-
     create_table :portfolio_social_links do |t|
       t.string :name
       t.string :url_pattern
