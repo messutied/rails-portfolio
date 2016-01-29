@@ -10,5 +10,13 @@ module Portfolio
     def unless_blank attribute, name
       attribute.blank? ? "<Empty #{name}>" : attribute
     end
+
+    def items_to_show site
+      Portfolio::SiteItem.subclasses.each do |klass|
+        return true if klass.where(site: site).published.count > 0
+      end
+      
+      return false
+    end
   end
 end
