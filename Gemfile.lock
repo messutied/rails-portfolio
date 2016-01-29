@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    portfolio (0.0.1)
+    rails-portfolio (0.0.2)
       bootstrap-sass
       bootstrap-sass-extras
       devise
@@ -182,7 +182,7 @@ PLATFORMS
 DEPENDENCIES
   factory_girl_rails
   faker
-  portfolio!
+  rails-portfolio!
   rspec-rails (~> 3.0)
   simplecov
   sqlite3
