@@ -4,6 +4,8 @@ require 'redcarpet'
 require 'bootstrap-sass'
 require 'bootstrap-sass-extras'
 require 'jquery-rails'
+require 'factory_girl_rails'
+require 'faker'
 
 
 module Portfolio

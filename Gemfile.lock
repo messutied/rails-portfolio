@@ -2,13 +2,13 @@ PATH
   remote: .
   specs:
     rails-portfolio (0.0.2)
-      bootstrap-sass
-      bootstrap-sass-extras
-      devise
-      jquery-rails
+      bootstrap-sass (~> 3.3)
+      bootstrap-sass-extras (~> 0.0)
+      devise (~> 3.5)
+      jquery-rails (~> 4.0)
       paperclip (~> 4.3)
-      rails (~> 4.2.0)
-      redcarpet
+      rails (~> 4.2)
+      redcarpet (~> 3.3)
 
 GEM
   remote: https://rubygems.org/
@@ -180,12 +180,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  factory_girl_rails
-  faker
+  factory_girl_rails (~> 4.5)
+  faker (~> 1.5)
   rails-portfolio!
   rspec-rails (~> 3.0)
-  simplecov
-  sqlite3
+  simplecov (~> 0.11)
+  sqlite3 (~> 1.3)
 
 BUNDLED WITH
    1.11.2
