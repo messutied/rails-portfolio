@@ -1,10 +1,10 @@
 module Portfolio
   module Admin
     class SiteItemsController < ApplicationController
-      before_action :set_item, only: [:show, :edit, :update, :destroy]
-      before_action :set_site, except: [:show]
+      before_action Portfolio.auth_action
+      before_action :set_item, only: [:edit, :update, :destroy]
+      before_action :set_site
       before_action :set_resource_name
-      before_action Portfolio.auth_action, except: [:show]
 
       def index
         @items = resource.where(site: @site)
@@ -19,7 +19,7 @@ module Portfolio
       end
 
       def create
-        @item = resource.new(item_project_params)
+        @item = resource.new(item_project_params.merge(site_id: params[:site_id]))
 
         if @item.save
           redirect_to [:edit, :admin, @site, @item], notice: 'Item project was successfully created.'
