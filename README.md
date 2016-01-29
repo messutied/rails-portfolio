@@ -4,6 +4,8 @@
 
 Easily build a minimalistic portfolio site by dropping this gem into your rails project.
 
+See an example site at: http://edd.bz.
+
 ## Dependencies
 
 This gem depends on [paperclip](https://github.com/thoughtbot/paperclip), so make sure you meet all its [requirements](https://github.com/thoughtbot/paperclip#requirements) (e.g. ImageMagick).
