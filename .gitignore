@@ -3,3 +3,4 @@ log/*.log
 pkg/
 *.DS_Store
 coverage/*
+*.gem

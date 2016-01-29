@@ -5,7 +5,7 @@ require "portfolio/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "portfolio"
+  s.name        = "rails-portfolio"
   s.version     = Portfolio::VERSION
   s.authors     = ["Eduardo Messuti"]
   s.email       = ["messuti.edd@gmail.com"]
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.2.0"
   s.add_dependency 'devise'
