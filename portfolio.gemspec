@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.description = 'This gem allows you to easily create a Portfolio web site to showcase your work.'
   s.license     = 'MIT'
 
-  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
-  s.test_files = Dir['spec/**/*']
+  s.files       = `git ls-files`.split("\n")
+  s.test_files  = `git ls-files -- spec/*`.split("\n")
 
   s.add_dependency 'rails', '~> 4.2'
   s.add_dependency 'devise', '~> 3.5'
