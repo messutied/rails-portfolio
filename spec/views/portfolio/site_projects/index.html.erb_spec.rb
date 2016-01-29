@@ -3,7 +3,7 @@ require 'rails_helper'
 module Portfolio
   RSpec.describe 'portfolio/site_projects/index' do
     before do
-      view.extend ApplicationHelper, SiteItemsHelper
+      view.extend ApplicationHelper, SiteItemsHelper, SitesHelper
     end
 
     context 'with uncategorized projects' do

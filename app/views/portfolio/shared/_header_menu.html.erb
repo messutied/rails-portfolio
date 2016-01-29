@@ -1,11 +1,11 @@
 <% if @site.site_menu_links.count > 0 || items_to_show(@site) %>
 <div class="portfolio_header_menu">
-  <%= link_to 'Home', show_portfolio_path(@site.key), class: 'active' %>
+  <%= link_to 'Home', portfolio.show_portfolio_path(@site.key), class: 'active' %>
 
   <% Portfolio::SiteItem.subclasses.each do |klass| %>
     <% if klass.where(site: @site).published.count > 0 %>
       <% name = klass.human_name.pluralize %>
-      <%= link_to klass.display_name || name.humanize, send("portfolio_#{name}_path", @site.key) %>
+      <%= link_to klass.display_name || name.humanize, portfolio.send("portfolio_#{name}_path", @site.key) %>
     <% end %>
   <% end %>
 
