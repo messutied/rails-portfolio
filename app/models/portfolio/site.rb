@@ -21,7 +21,7 @@ module Portfolio
     end
 
     def set_key
-      self.key = person_name.parameterize('_') if key.blank?
+      self.key = person_name.parameterize('_') if key.blank? && person_name
     end
   end
 end
