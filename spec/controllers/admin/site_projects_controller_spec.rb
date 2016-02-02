@@ -5,99 +5,57 @@ module Portfolio
     RSpec.describe SiteProjectsController, type: :controller do
       routes { Portfolio::Engine.routes }
 
-      let(:admin_user) { create :admin_user }
+      context 'when no admin user authenticated' do
+        it_behaves_like 'a protected nested resource', 'site_project', 'site'
+      end
 
-      describe 'GET index' do
-        context 'when no admin user authenticated' do
-          before { get :index, site_id: 0 }
-          it { expect(response).to redirect_to(new_admin_user_session_path) }
-        end
+      context 'when admin user authenticated' do
+        let(:admin_user) { create :admin_user }
+        before { sign_in admin_user }
 
-        context 'when admin user authenticated' do
-          before do
-            sign_in admin_user
-            get :index, site_id: site.id
-          end
-
+        describe 'GET index' do
           let(:site) { create :site }
+          before { get :index, site_id: site.id }
 
           it { expect(response).to render_template('index') }
         end
-      end
 
-      describe 'GET new' do
-        context 'when no admin user authenticated' do
-          before { get :new, site_id: 0 }
-          it { expect(response).to redirect_to(new_admin_user_session_path) }
-        end
-
-        context 'when admin user authenticated' do
-          before do
-            sign_in admin_user
-            get :new, site_id: site.id
-          end
-
+        describe 'GET new' do
           let(:site) { create :site }
+          before { get :new, site_id: site.id }
 
           it { expect(response).to render_template('new') }
         end
-      end
 
-      describe 'GET edit' do
-        context 'when no admin user authenticated' do
-          before { get :edit, site_id: 0, id: 0 }
-          it { expect(response).to redirect_to(new_admin_user_session_path) }
-        end
-
-        context 'when admin user authenticated' do
-          before do
-            sign_in admin_user
-            get :edit, site_id: site.id, id: item.id
-          end
-
+        describe 'GET edit' do
           let(:site) { create :site }
           let(:item) { create(:site_project, site: site) }
+          before { get :edit, site_id: site.id, id: item.id }
 
           it { expect(response).to render_template('edit') }
         end
-      end
 
-      describe 'POST create' do
-        context 'when no admin user authenticated' do
-          before { post :create, site_id: 0 }
-          it { expect(response).to redirect_to(new_admin_user_session_path) }
-        end
-
-        context 'when admin user authenticated' do
-          before do
-            sign_in admin_user
-            post :create, site_id: site.id, site_project: { title: 'proj1' }
-          end
-
+        describe 'POST create' do
           let(:site) { create :site }
+          before {
+            post :create, site_id: site.id, site_project: { title: 'proj1' }
+          }
 
           it {
             expect(response).to redirect_to(
-                edit_admin_site_site_project_path(site.id, assigns(:item).id)
-              )
+              edit_admin_site_site_project_path(site.id, assigns(:item).id)
+            )
           }
         end
-      end
 
-      describe 'PUT update' do
-        context 'when no admin user authenticated' do
-          before { post :create, site_id: 0 }
-          it { expect(response).to redirect_to(new_admin_user_session_path) }
-        end
-
-        context 'when admin user authenticated' do
-          before do
-            sign_in admin_user
-            put :update, site_id: site.id, id: item.id, site_project: { title: 'new title' }
-          end
-
+        describe 'PUT update' do
           let(:site) { create :site }
           let(:item) { create(:site_project, site: site) }
+
+          before do
+            put :update, site_id: site.id, id: item.id,
+                site_project: { title: 'new title' }
+          end
 
           it {
             expect(response).to redirect_to(
@@ -106,26 +64,17 @@ module Portfolio
             expect(assigns(:item).title).to eq 'new title'
           }
         end
-      end
 
-      describe 'DELETE destroy' do
-        context 'when no admin user authenticated' do
-          before { delete :destroy, site_id: 0, id: 0 }
-          it { expect(response).to redirect_to(new_admin_user_session_path) }
-        end
-
-        context 'when admin user authenticated' do
-          before do
-            sign_in admin_user
-            delete :destroy, site_id: site.id, id: item.id
-          end
-
+        describe 'DELETE destroy' do
           let(:site) { create :site }
           let(:item) { create(:site_project, site: site) }
+
+          before { delete :destroy, site_id: site.id, id: item.id }
 
           it {
             expect(response).to redirect_to(admin_site_site_projects_path)
           }
+          it { expect(SiteProject.find_by_id(item.id)).to be nil }
         end
       end
     end
