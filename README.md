@@ -32,11 +32,29 @@ This will create:
 
 - config/initializers/portfolio.rb
 
-And insert code into:
+And insert the following code to your app:
 
-- config/routes.rb
-- app/assets/javascripts/application.js
-- app/assets/stylesheets/application.css
+```ruby
+# config/routes.rb
+	
+mount Portfolio::Engine, at: '/portfolio'
+```
+
+```javascript
+// app/assets/javascripts/application.js
+
+//= require portfolio/application
+```
+
+```css
+/* app/assets/stylesheets/application.css
+
+*= require portfolio/application
+
+*/
+```
+
+- 
 
 Make sure you have a root path defined. If you'd like to point the root path at your portfolio, uncomment the line:
 
@@ -48,10 +66,8 @@ root 'portfolio/sites#default'
 If you don't have an authorization method already in place, you don't have to do anything and we'll setup an admin_user table and login interface for you (through [devise](https://github.com/plataformatec/devise)), if you'd like to use your own auth method you'll have to uncomment the following lines in `config/initializers/portfolio.rb`:
 
 ```ruby
-Portfolio.setup do |config|
-  config.auth_method = :custom
-  config.auth_action = :my_auth_action!
-end
+config.auth_method = :custom
+config.auth_action = :my_auth_action!
 ```
 
 `my_auth_action!` is the method that'll be called before enabling the user to access the portfolio admin panel, so make sure it exists and only returns `true` when properly authorized.
