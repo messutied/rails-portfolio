@@ -1,6 +1,6 @@
 # Rails Portfolio
 
-[![Build Status](https://travis-ci.org/messuti-edd/rails-portfolio.svg?branch=master)](https://travis-ci.org/messuti-edd/rails-portfolio)
+[![Build Status](https://travis-ci.org/messutied/rails-portfolio.svg?branch=master)](https://travis-ci.org/messuti-edd/rails-portfolio)
 
 Easily build a minimalistic portfolio site by dropping this gem into your rails project.
 
